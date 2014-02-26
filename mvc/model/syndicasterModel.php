@@ -48,7 +48,11 @@ class syndicaster {
 	}
 
 	public function getPlays($id) {
-		$path='reports/views'; //aqui hice un cambio
+<<<<<<< HEAD
+		$path='reports/views'; //aqui otro cambio
+=======
+		$path='reports/views';
+>>>>>>> FETCH_HEAD
 		$token=$this->token();
 		$curlheader[0] = "Content-Type: application/json";
         $curlheader[1] = "Authorization: OAuth ".$token;
