@@ -48,18 +48,17 @@ class syndicaster {
 	}
 
 	public function getPlays($id) {
-		$path='reports/views?dimensions=video&filters[video_id]=6767523&excludes[provider_id]=3212
- &excludes[publisher_id]=4323&excludes[host_id]=452&start_date=2004-10-01&end_date=2013-10-01&limit=1';
+		$path='reports/views?dimensions=video';
 		$token=$this->token();
 		$curlheader[0] = "Content-Type: application/json";
         $curlheader[1] = "Authorization: OAuth ".$token;
 
         $access_token_post_data = array(
-        	'dimensions' => 'video',
-            'filters' => array ('video_id'=>'6767523', 'publisher_id'=>'3089','provider_id'=>'3089'), 
-            'excludes' => array ('publisher_id'=>'3089', 'provider_id'=>'3089'),
+        	//'dimensions' => array('video', 'provider', 'playlist'),
+            'filters' => array ('video_id'=>'15629096', 'publisher_id'=>'3089'), 
             'start_date'=> '2013-12-01', 
-            'end_date'=>'2014-02-01');
+            'end_date'=>'2014-02-01',
+            'limit'=>1);
 
 		$response=$this->sendAPI("GET", $access_token_post_data, $path, 1,$curlheader);
 		return $response;
