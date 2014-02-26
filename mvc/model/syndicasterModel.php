@@ -49,7 +49,11 @@ class syndicaster {
 
 	public function getPlays($id) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		$path='reports/views'; //aqui otro cambio
+=======
+		$path='reports/views';
+>>>>>>> FETCH_HEAD
 =======
 		$path='reports/views';
 >>>>>>> FETCH_HEAD
