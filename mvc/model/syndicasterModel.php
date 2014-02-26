@@ -76,7 +76,7 @@ class syndicaster {
 		    $description=preg_replace("/\r/", "", $description);
 		    $hosted=$array->master_file->uri;
 		    $flight_start_time=$array->completed_at;
-		    $flight_end_time=$array->end_time;
+		    $flight_end_time=date('Y-m-d H:i:s', $array->end_time;/1000); 
 		    $labels=preg_replace("/ /","", $array->metadata->keywords);
 		    $labels=preg_replace("/,/","; /", $labels);
 		    $metadata1=$array->categories[0]->name;
@@ -84,7 +84,7 @@ class syndicaster {
 		    $metadata3=$array->categories[2]->name;
 		    $embedcode=null;
 		    $id=$array->id;
-		    $video_length=date('Y-m-d H:i:s', $array->duration/1000); 
+		    $video_length=$array->duration*1000; 
 		    $file_size=$array->files[0]->file_size; 
 		    $totalplays=null;  		
 		       					
