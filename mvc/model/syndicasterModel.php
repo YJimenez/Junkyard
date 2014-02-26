@@ -56,7 +56,8 @@ class syndicaster {
 
         $access_token_post_data = array(
         	'dimensions' => 'video',
-            'filters' => array ('video_id'=>6767523), 
+            'filters' => array ('video_id'=>'6767523', 'publisher_id'=>'3089','provider_id'=>'3089'), 
+            'excludes' => array ('publisher_id'=>'3089', 'provider_id'=>'3089'),
             'start_date'=> '2013-12-01', 
             'end_date'=>'2014-02-01');
 
@@ -84,7 +85,7 @@ class syndicaster {
 		    $metadata3=$array->categories[2]->name;
 		    $embedcode=null;
 		    $id=$array->id;
-		    $video_length=date('Y-m-d H:i:s', $array->duration/1000);  
+		    $video_length=$array->duration;  
 		    $file_size=$array->files[0]->file_size; 
 		    $totalplays=null;  		
 		       					
