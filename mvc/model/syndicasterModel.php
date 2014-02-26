@@ -83,7 +83,7 @@ class syndicaster {
 		    $metadata3=$array->categories[2]->name;
 		    $embedcode=null;
 		    $id=$array->id;
-		    $video_length=date('Y-m-d H:i:s', $array->duration/1000);  
+		    //$video_length=date('Y-m-d H:i:s', $array->duration/1000);  
 		    $file_size=$array->files[0]->file_size; 
 		    $totalplays=null;  		
 		       					
