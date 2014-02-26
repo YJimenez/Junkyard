@@ -48,8 +48,7 @@ class syndicaster {
 	}
 
 	public function getPlays($id) {
-		$path='reports/views?dimensions=video&filters[video_id]=6767523&excludes[provider_id]=3212
- &excludes[publisher_id]=4323&excludes[host_id]=452&start_date=2004-10-01&end_date=2013-10-01&limit=1';
+		$path='reports/views';
 		$token=$this->token();
 		$curlheader[0] = "Content-Type: application/json";
         $curlheader[1] = "Authorization: OAuth ".$token;
