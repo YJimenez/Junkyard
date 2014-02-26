@@ -57,7 +57,6 @@ class syndicaster {
         $access_token_post_data = array(
         	'dimensions' => 'video',
             'filters' => array ('video_id'=>'6767523', 'publisher_id'=>'3089','provider_id'=>'3089'), 
-            'excludes' => array ('publisher_id'=>'3089', 'provider_id'=>'3089'),
             'start_date'=> '2013-12-01', 
             'end_date'=>'2014-02-01');
 
