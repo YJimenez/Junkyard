@@ -64,6 +64,16 @@ class syndicaster {
 		return $response;
 	}
 
+	public function getEmbed($id) {
+		$path='file_sets/'.$id.'/distributions';
+		$data=array();
+		$token=$this->token();
+		$curlheader[0] = "Content-Type: application/json";
+        $curlheader[1] = "Authorization: OAuth ".$token;
+        $response=$this->sendAPI("GET", '', $path, 1,$curlheader);
+		return $response[0]->repo_guid;
+	}
+
 	public function fileWrite($response, $property) {
 		foreach ($response->results as $array) {	
 			$uri=$array->files[0]->uri;
@@ -82,11 +92,14 @@ class syndicaster {
 		    $metadata1=$array->categories[0]->name;
 		    $metadata2=$array->categories[1]->name;
 		    $metadata3=$array->categories[2]->name;
-		    $embedcode=null;
 		    $id=$array->id;
 		    $video_length=$array->duration*1000; 
 		    $file_size=$array->files[0]->file_size; 
-		    $totalplays=null;  		
+		    $totalplays=null;  
+		    $idDistribution=$this->getEmbed($id);	
+		    $embedcode='<div id="videoplayer-1393456103"></div>';
+		    $embedcode.='<script src="http://eplayer.clipsyndicate.com/embed/player.js?div_id=videoplayer-1393456103&height=510&page_count=5&pf_id=9798&va_id='.$idDistribution.'&width=480&windows=2" type="text/javascript"></script>';	
+		    		
 		       					
 		    $myFile=fopen($property.'.csv','a');//abrir archivo, nombre archivo, modo apertura
 			fwrite($myFile,  $uri.",".$title.",".$thumbnail.",".$description.",".$hosted.",".$flight_start_time.",".$flight_end_time.",/".$labels.",".$metadata1.",".$metadata2.",".$metadata3.",".$embedcode.",".$id.",".$video_length.",".$file_size.",".$totalplays."\n");		
