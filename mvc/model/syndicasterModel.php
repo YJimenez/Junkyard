@@ -86,7 +86,7 @@ class syndicaster {
 		    $description=preg_replace("/\r/", "", $description);
 		    $hosted=$array->master_file->uri;
 		    $flight_start_time=$array->completed_at;
-		    $flight_end_time=date('Y-m-d H:i:s', $array->end_time;/1000); 
+		    $flight_end_time=$array->expires_at;//date('Y-m-d H:i:s', $array->end_time;/1000); 
 		    $labels=preg_replace("/ /","", $array->metadata->keywords);
 		    $labels=preg_replace("/,/","; /", $labels);
 		    $metadata1=$array->categories[0]->name;
