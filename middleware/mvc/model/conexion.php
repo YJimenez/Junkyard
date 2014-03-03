@@ -23,7 +23,7 @@ abstract class conexion{
 		mysql_close($this->link_conexion_db);
 	}
 
-	protected function SingleQuery ($query){
+	protected function querySimple ($query){
 		$this->Connection();
 		if(mysql_query($query)or die (mysql_error())){
 			$this->msj = true;
@@ -37,7 +37,7 @@ abstract class conexion{
 		}
 	}
 
-	protected function QueryResults ($query){
+	protected function queryResultados ($query){
 		$this->Connection();
 		$this->query_data = mysql_query($query) or die (mysql_error());
 		$this->rows = mysql_num_rows($this->query_data);
