@@ -4,14 +4,14 @@ if($_SESSION['ooyala'])
 header("Location: index.php");
 
 //declaramos clase usuarios (tabla, campo usuario, campo password, campo activo -si existe-, session)
-$usr =  new LW_usuarios("usuarios", "usuario", "password", "activo", "ooyala");
+$usr =  new usuarios("usuarios", "userL", "passL", "actL", "ooyala");
 $error=0;
 
 if($_POST) {
-if(strlen($_POST['usuario'])>0&&strlen($_POST['clave'])>0){
-		$usr->usuario($_POST['usuario'], md5($_POST['clave']));
+if(strlen($_POST['user'])>0&&strlen($_POST['password'])>0){
+		$usr->usuario($_POST['user'], md5($_POST['password']));
 		if($usr->allow()) {
-			header("Location: index.php?section=home");
+			//header("Location: index.php?section=home");
 			
 		}
 		else

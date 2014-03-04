@@ -16,9 +16,9 @@
         <section>        
             <article>
 				<form action="" method="post" autocomplete="on">
-				  User:<input type="text" name="usuario" autofocus><br>
+				  User:<input type="text" name="user" autofocus><br>
 				  Password: <input type="text" name="password"><br>
-				  Active: <input type="text" name="activo"><br>
+				  Active: <input type="text" name="active"><br>
 				  <input type="submit">
 				</form> 
             </article>
