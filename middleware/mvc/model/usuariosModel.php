@@ -30,10 +30,10 @@
           //si usuario y contraseña coinciden
           
           if ($resultado) {
-              $datos = mysql_fetch_array($resultado);
-              mysql_query($querya);
+             print_r($resultado);
               $this->auth = true;
-              $_SESSION['' . $mySession . ''] = $datos[0];
+              echo ".".$resultado[0]['id'];
+              $_SESSION['' . $mySession . ''] = $resultado[0][0];
           }
           
           // si contraseña es incorrecta
