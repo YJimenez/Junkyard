@@ -1,3 +1,6 @@
+<?php if(isset($error))
+        echo $error;
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -18,7 +21,6 @@
 				<form action="" method="post" autocomplete="on">
 				  User:<input type="text" name="user" autofocus><br>
 				  Password: <input type="text" name="password"><br>
-				  Active: <input type="text" name="active"><br>
 				  <input type="submit">
 				</form> 
             </article>

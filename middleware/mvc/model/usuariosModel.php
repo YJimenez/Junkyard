@@ -16,8 +16,7 @@
           $myTable = $this->myTable;
           $myActivo = $this->activo;
           $mySession = $this->session;
-          //conectando BD
-          $this->Connection();
+          
 
           //se busca que el usuario exista en la bd
        
@@ -25,12 +24,12 @@
           $query = "select * from " . $myTable["table"] . " where " . $myTable["userColum"] . "='$usuario' and " . $myTable["passColum"] . "='$password'";
           if ($myActivo)
               $query .= " and " . $myTable["actColum"] . " ='1'";
-          $resultado = mysql_query($query) or die(mysql_error());
-          $num = mysql_num_rows($resultado);
+          $resultado = $this->queryResultados($query);
+          
           
           //si usuario y contraseña coinciden
           
-          if ($num == 1) {
+          if ($resultado) {
               $datos = mysql_fetch_array($resultado);
               mysql_query($querya);
               $this->auth = true;
