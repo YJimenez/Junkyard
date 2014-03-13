@@ -61,7 +61,7 @@
                                 echo "</tr>";
 
                         } ?>
-                        <tr>
+                        
                 </table>
                 <br>
                 <form action="admin.php?section=adminUsers" method="post">

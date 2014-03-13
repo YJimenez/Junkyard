@@ -2,16 +2,16 @@
 abstract class conexion{
 
 	private $server_db = 'localhost';
-	private $user_db = 'junkymx_junkymx';
+/*	private $user_db = 'junkymx_junkymx';
 	private $password_db = 'Jy@rd';
 	private $name_db = 'junkymx_ooyala';
+*/
 
-/*
 	
 	private $user_db = 'root';
 	private $password_db = '';
 	private $name_db = 'ooyala';
-*/
+
 	private $link_conexion_db;
 	protected $msj;
 	private $myConn;
