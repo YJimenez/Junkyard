@@ -1,0 +1,33 @@
+
+html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input,hr {margin:0; padding:0;}
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; display: inline; zoom: 1; }
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin: 0px;
+	font-size: 12px;
+	font-weight: normal;
+	background-color: #ffffff;
+}
+
+.tdgray {
+  background-color: #ededed;
+}
+.error {
+  color:red;
+}
+.green {
+  color: green;
+}
+.success {
+  background-color: green;
+  color: white;
+}
+.errorS {
+  background-color: red;
+  color: white;
+}
+.pointer {
+  cursor: pointer;
+}

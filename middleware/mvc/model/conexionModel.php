@@ -2,35 +2,44 @@
 abstract class conexion{
 
 	private $server_db = 'localhost';
+	private $user_db = 'junkymx_junkymx';
+	private $password_db = 'Jy@rd';
+	private $name_db = 'junkymx_ooyala';
+
+/*
+	
 	private $user_db = 'root';
 	private $password_db = '';
 	private $name_db = 'ooyala';
+*/
 	private $link_conexion_db;
 	protected $msj;
+	private $myConn;
 	protected $data = array ();
 	protected $rows;
 	protected $query_data;
 
-	private function Connection (){
-		$this->link_conexion_db = mysql_connect($this->server_db,$this->user_db,$this->password_db);
-		@mysql_query('SET NAME UTF-8');
-		mysql_select_db($this->name_db,$this->link_conexion_db);
 
-		return $this->link_conexion_db;
+	
+	private function Connection (){
+		$this->myConn = new mysqli($this->server_db, $this->user_db, $this->password_db, $this->name_db);
+		$this->myConn->query('SET NAME UTF-8');
 	}
+
 
 	private function CloseConnection (){
-		mysql_close($this->link_conexion_db);
+		unset($this->myConn);
 	}
-
+	
 	protected function querySimple ($query){
 		$this->Connection();
-		if(mysql_query($query)or die (mysql_error())){
+		if($this->myConn->query($query)){
 			$this->msj = true;
 			$this->CloseConnection();
 			return $this->msj;
 		}
 		else{
+			echo $this->myConn->error;
 			$this->msj = false;
 			$this->CloseConnection();
 			return $this->msj;
@@ -39,8 +48,8 @@ abstract class conexion{
 
 	protected function queryResultados ($query){
 		$this->Connection();
-		$this->query_data = mysql_query($query) or die (mysql_error());
-		$this->rows = mysql_num_rows($this->query_data);
+		$this->query_data = $this->myConn->query($query) or die ($this->myConn->error);
+		$this->rows = $this->query_data->num_rows;
 		if($this->rows == 0){
 			$this->msj = false;
 			$this->CloseConnection();
@@ -48,12 +57,20 @@ abstract class conexion{
 		}
 		else{
 			$this->data=array();
-			while($result = mysql_fetch_assoc($this->query_data)){
+			while($result = $this->query_data->fetch_assoc()){
 				$this->data [] = $result;
 			}
 			$this->CloseConnection();
 			return $this->data;
 		}
+	}
+
+	public function redirect($url, $time, $no_session_par = null) {
+		$url = urlencode($url);
+		$url = str_replace('%3F', '?', $url);
+		$url = str_replace('%3D', '=', $url);
+		$url = str_replace('%26', '&', $url);
+		echo '<meta http-equiv="refresh" content="'.$time.'; url='.$url.'">';
 	}
 
 }

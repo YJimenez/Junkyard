@@ -1,12 +1,14 @@
 <?php
   class usuarios extends conexion
   {
-      public function __construct($table = "", $userC = "", $passC = "", $activo = "", $session = "")
+      public function __construct($table = "", $idC="id", $userC = "", $passC = "", $activo = "", $admin="", $session = "")
       {
           $this->myTable = array("table" => "$table", "userColum" => "$userC", "passColum" => "$passC", "actColum" => "$activo");
           $this->activo = $activo;
           $this->session = $session;
           $this->auth = false;
+          $this->idUsuario=$idC;
+          $this->admin=$admin;
       }
       
       
@@ -24,16 +26,17 @@
           $query = "select * from " . $myTable["table"] . " where " . $myTable["userColum"] . "='$usuario' and " . $myTable["passColum"] . "='$password'";
           if ($myActivo)
               $query .= " and " . $myTable["actColum"] . " ='1'";
+          if($this->admin) 
+              $query.=" and admin ='1'";
+      
           $resultado = $this->queryResultados($query);
           
           
           //si usuario y contraseña coinciden
           
           if ($resultado) {
-             print_r($resultado);
               $this->auth = true;
-              echo ".".$resultado[0]['id'];
-              $_SESSION['' . $mySession . ''] = $resultado[0][0];
+              $_SESSION['' . $mySession . ''] = $resultado[0][$this->idUsuario];
           }
           
           // si contraseña es incorrecta
