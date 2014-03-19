@@ -5,7 +5,13 @@ header("Location: admin.php?section=adminLogin");
 $middleware=new admin();
 extract($_GET);
 
-$middleware->change($id, $status, $change);
-$middleware->redirect("?section=adminUsers", 0);
 
+if($change=="groups") {
+	$middleware->changeGroupStatus($id, $status);
+	$middleware->redirect("?section=adminGroups", 0);
+}
+else {
+	$middleware->change($id, $status, $change);
+	$middleware->redirect("?section=adminUsers", 0);
+}
 ?>
