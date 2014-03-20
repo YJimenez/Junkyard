@@ -6,6 +6,12 @@ $hostname_bd = "localhost";
 $database_bd = "junkymx_ooyala";
 $username_bd = "junkymx_junkymx";
 $password_bd = "Jy@rd";
+
+$hostname_bd = "localhost";
+$database_bd = "ooyala";
+$username_bd = "root";
+$password_bd = "";
+
 $bd = mysql_connect($hostname_bd, $username_bd, $password_bd) or trigger_error(mysql_error(),E_USER_ERROR); 
 /* session_start();
 if($_SESSION['session']==NULL){

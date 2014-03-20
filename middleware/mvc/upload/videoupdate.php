@@ -27,9 +27,7 @@ if($type=="videoinfoupdate"){
 
 		$updateSQL = "UPDATE videos SET title='".$title."', description='".$description."' WHERE id='".$idvideo."'";
 		$Results = mysql_query($updateSQL) or die(mysql_error());
-	
- 
-}else if($type=="updateinfo"){ 	
+		
 
 		$id=$_POST['id'];
 		$idvideo=$_POST['idvideo'];
@@ -62,7 +60,7 @@ if($type=="videoinfoupdate"){
 	 echo "<script language='javascript'>alert('The video has been changed');</script>";
 
 }
-	header('Location: videoplayers.php?idvideo='.$idvideo);
+	header('Location: videos.php?idvideo='.$idvideo);
 
 ?>
 

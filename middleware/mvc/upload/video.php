@@ -26,6 +26,7 @@ session_start();
 	<head>
         <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
         <title><?php echo $title ?> video</title>
+        <link href="style.css" rel="stylesheet" type="text/css" />
     </head>
  
     <body>
@@ -33,30 +34,33 @@ session_start();
         <table width="500px;" >
         	<tr>
         	<td><h2><?php echo $title ?> video</h2></td>
+        	<td><a href="videos/<?php echo $idvideo;?>.mp4" target="_blank"><input type="button" value="Preview"></a></td>
         	</tr>
         </table>
  
+		
+ 
         <section>
         	        
-	            <table border="1" style="margin-bottom:20px;">
+	            <table style="margin-bottom:20px;" class="table" cellpadding="8px">
 	            	<tr>
-	            		<td>Prev Img</td>
+	            		<td><strong>Prev Img</strong></td>
 	            		<td><i>this data will be get after upload</i></td>
 	            	</tr>
 	            	<tr>	
-	            		<td>Title</td>
-	            		<td><?php echo $title ?></td>
+	            		<td><strong>Title</strong></td>
+	            		<td><?php echo $title ?></strong></td>
 	            	</tr>
 	            	<tr>	
-	            		<td>Description</td>
+	            		<td><strong>Description</strong></td>
 	            		<td><?php echo $description ?></td>
 	            	</tr>
 	            	<tr>	
-	            		<td>Video Length</td>
+	            		<td><strong>Video Length</strong></td>
 	            		<td><i>this data will be get after upload</i></td>
 	            	</tr>
 	            	<tr>	
-	            		<td>Player Select</td>
+	            		<td><strong>Player Select</strong></td>
 	            		<td><?php 
 		            			$selectSQL = "select * from videosinfo where idvideo=".$idvideo;
 								$Results = mysql_query($selectSQL) or die(mysql_error());
@@ -68,35 +72,33 @@ session_start();
 						</td>
 	            	</tr>
 	            	<tr>	
-	            		<td>Site Owner</td>
-	            		<td><?php echo $siteowner ?></td>
+	            		<td><strong>Site Owner</strong></td>
+	            		<td><?php echo $siteowner ?></strong></td>
 	            	</tr>
 	            	<tr>	
-	            		<td>Video producer name</td>
+	            		<td><strong>Video producer name</strong></td>
 	            		<td><?php echo $producer ?></td>
 	            	</tr>
 	            	<tr>	
-	            		<td>Date uploaded local</td>
+	            		<td><strong>Date uploaded local</strong></td>
 	            		<td><?php echo $datelocal ?></td>
 	            	</tr>
 	            	<tr>	
-	            		<td>Date uploaded vendor</td>
+	            		<td><strong>Date uploaded vendor</strong></td>
 	            		<td><?php if($datevendor!=null){echo $datevendor;}else{ echo '<i>this data will be get after upload</i>';} ?></td>
 	            	</tr>
 	            	<tr>	
-	            		<td>Id</td>
+	            		<td><strong>Id</strong></td>
 	            		<td><?php echo $idvideo ?></td>
 	            	</tr>
 	            	<tr>	
-	            		<td>Reference Id</td>
+	            		<td><strong>Reference Id</strong></td>
 	            		<td><?php if($embed_code!=null){echo $embed_code;}else{ echo '<i>this data will be get after upload</i>';} ?></td>
 	            	</tr>
 	            </table> 
 	    <input type="button" value="Index" onclick="window.location='index.php'">
-	    <a href="videos/<?php echo $idvideo;?>.mp4" target="_blank">
-		<input type="button" value="Preview"></a></td>
-	    <a href="videos.php?idvideo=<?php echo $idvideo;?>" target="_blank">
-		<input type="button" value="Edit"></a>
+	    <input type="button" onclick="window.location='videoplayers.php?idvideo=<?php echo $idvideo;?>'" value="View player and labels">
+		<a href="videos.php?idvideo=<?php echo $idvideo;?>"><input type="button" value="Edit"></a>
 							             
         </section>
     </body> 

@@ -54,7 +54,7 @@
 					<td colspan="2">
 						<?php if($theToken) { 
 								$theURL="http://www.junkyard.mx/mrss/?section=feed&idCove=".$theToken[0]['id']."&date=".$fecha; 
-								echo "The MRSS for ".$theToken[0]['property']." is <a href='".$theURL."'>".$theURL."</a>";
+								echo "The MRSS for ".$theToken[0]['property']." is <a href='".$theURL."' target='_blank'>".$theURL."</a>";
 							}
 						?>
 					</td>

@@ -25,14 +25,45 @@
 	$players=$api->get("players");
 	$labels=$api->get("/v2/labels");	
 ?>
+<html>
+<head>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	<script src="js/swfobject.js" type="text/javascript"></script>
+	<script src="js/jquery.clippy.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		$(document).ready(function()
+		{
+			/* Clippy location (hosted on Github) */
+			var clippy_swf = "js/clippy.swf";
 
+			/* Get all of this boring stuff out of the way... */
+			$('#pastebin').click(function(evt)
+			{
+				$('#pastebin').removeClass('empty');
+				$('#pastebin')[0].select();
+				return false;
+			});
+			
+			/* Set up the clippies! */
+			$('.clippy').clippy({ clippy_path: clippy_swf });
+			
+			$('#change_me').keyup(function()
+			{
+				$('#change_this').html('').clippy({'text': $(this).val(), clippy_path: clippy_swf });
+			}).keyup();
+		});
+	</script>
+</head>
 
+						
 <h1>Video data</h1>
 	<a href="videos/<?php echo $idvideo;?>.mp4" target="_blank">
-		<input type="button" value="Preview">
-	</a><br/>
+		<input type="button" value="Preview"></a><br/>
 
-
+		http://junkyard.mx/ooyala/upload/videos/<?php echo $idvideo; ?>.mp4
+		<span class="clippy" data-text="http://junkyard.mx/ooyala/upload/videos/<?php echo $idvideo; ?>.mp4"></span>
+		
 
 <table style="margin:20px 0px;">
 	<tr>
@@ -58,7 +89,7 @@
 		$labelnew=$row['labelnew'];
 		$embed_code=$row['embed_code'];
 ?>
-<table border="1" style="margin:20px 0px;">
+<table style="margin:20px 0px;" class="table" border="1" cellpadding="8" cellspacing="1">
 
 <form action="videoupdate.php" method="post">		
 	<tr>
@@ -73,12 +104,12 @@
 				<?php } ?>
 			</select>
 		</td>
-		<td rowspan="2"></td>
+		<td></td>
 	</tr>	
 	<tr>
 		<td><strong>Expire:</td>
 		<td><input type="text" name="expire" value="<?php echo $expire; ?>"></strong></td>
-		
+		<td></td>
 	</tr>	
 	<tr>
 		<td><strong>Label 1:</td>
@@ -141,7 +172,7 @@
 				</option>			
 				<?php } */?>
 			</select></td>
-		<td rowspan="2"></td>
+		<td></td>
 	</tr>
 	<?php
 		if($embed_code!=NULL){
@@ -173,7 +204,7 @@
 	</tr>
 </table>
 
-
+</html>
 
 
 

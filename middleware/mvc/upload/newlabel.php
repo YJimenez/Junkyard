@@ -1,9 +1,16 @@
-<?phpsession_start();
+<?php session_start();
 	if(!isset($_SESSION['ooyala']))
 	header("Location: ../index.php?section=login");
 ?>
 <html>
+<head>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
 	<body>
+	
+	<?php include("menu.php"); ?>
+	<br/>
+	
 	<form action="" method="post" enctype="multipart/form-data"> 
 		<table>		
 			<tr>
@@ -11,8 +18,8 @@
 				<td><input type="text" name="name"></td>
 			</tr>
 			<tr>
-				<td><input type="button" value="Index" onclick="window.location='index.php'"></td>
-				<td><input type="submit" value="Create"></td>
+				<td><input type="button" value="Index" onclick="window.location='index.php'"><input type="submit" value="Create"></td>
+				<td></td>
 			</tr>
 		</table>
 	

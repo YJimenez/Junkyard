@@ -11,7 +11,7 @@ session_start();
 
 
 		$type=$_POST['type'];
-		$title=$_POST['title'];
+		$title=$_POST['titlename'];
 		$description=$_POST['description'];
 		$owner=$_POST['owner'];
 		$producer=$_POST['producer'];
@@ -49,5 +49,5 @@ if($type=='newvideo'){
 
 	    	 
 
-		header('Location: videoplayers.php?idvideo='.$idvideo);
+		header('Location: videos.php?idvideo='.$idvideo);
 

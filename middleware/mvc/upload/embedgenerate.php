@@ -28,10 +28,10 @@
 ?>
 
 
+
 <h1>Generate new data</h1>
 	<a href="videos/<?php echo $idvideo;?>.mp4" target="_blank">
-		<input type="button" value="Preview">
-	</a><br/>
+		<input type="button" value="Preview"></a><br/>
 
 <table style="margin:20px 0px;">
 	<tr>
@@ -44,8 +44,8 @@
 	</tr>
 </table>
 
-<table style="margin:20px 0px;" border="1">
 <form action="videoinsert.php" method="post">
+<table style="margin:20px 0px;" border="1" cellspacing="1" cellpadding="10">
 	<tr>
 		<td><strong>Player:</td>
 		<td><select name="playerid">
@@ -98,17 +98,13 @@
 				</option>			
 				<?php } */?>
 			</select></td>
-	</tr>	
-	<tr>
-		<td>
+	</tr>
+</table>	
 		<input type="hidden" value="<?php echo $idvideo;?>" name="idvideo">	
 		<input type="hidden" value="newdata" name="type">
+		<input type="button" value="Index" onclick="window.location='index.php'">
 		<input type="submit" value="Generate">
-		<td>	
-		</td>
-	</tr>
 </form>
-</table>
 
 
 

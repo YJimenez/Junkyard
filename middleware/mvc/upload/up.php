@@ -47,6 +47,8 @@ require_once('Connections/bd.php');
 		
 				$embed_code=$results->embed_code;
 				$updated_at=$results->updated_at;
+				$duration=$results->duration;
+				$imgprev=$results->preview_image_url;
 				//echo "este es el embed ".$embed_code;		
 		
 				$url=$api->get("/v2/assets/".$embed_code."/uploading_urls");
@@ -146,7 +148,7 @@ require_once('Connections/bd.php');
 				$updateSQL = "UPDATE videosinfo SET embed_code='".$embed_code."' WHERE id='".$id."'";
 				$Results = mysql_query($updateSQL) or die(mysql_error());
 				
-				$updateSQL2 = "UPDATE videos SET embed_code='".$embed_code."', datevendor='".$updated_at."' WHERE id='".$idvideo."'";
+				$updateSQL2 = "UPDATE videos SET embed_code='".$embed_code."', length='".$duration."', datevendor='".$updated_at."', imgprev='".$imgprev."', status='1' WHERE id='".$idvideo."'";
 				$Results2 = mysql_query($updateSQL2) or die(mysql_error());
 		
 		
@@ -167,7 +169,7 @@ require_once('Connections/bd.php');
 				print_r($fResult);	
 				
 				
-				header('Location: videoplayers.php?idvideo='.$rowvideo['id']);
+				header('Location: localvideos.php?idvideo='.$rowvideo['id']);
 }}
 ?>
 

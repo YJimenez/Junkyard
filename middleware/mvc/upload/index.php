@@ -3,112 +3,105 @@ session_start();
 	if(!isset($_SESSION['ooyala']))
 	header("Location: ../index.php?section=login");
 
-	require_once('Connections/bd.php');
-	mysql_select_db($database_bd, $bd);		
-	
-	
-	
-	/*
-	if($sorted=='local'){
-			$selectSQL = "select * from videos where embed_code is null";
-			$Results = mysql_query($selectSQL) or die(mysql_error());
-			
-		} else if($sorted=='ooyala'){
-			$selectSQL = "select * from videos where embed_code is null";
-			$Results = mysql_query($selectSQL) or die(mysql_error());
-		
-		} else if($sorted=='date'){
-			$selectSQL = "select * from videos order by datelocal ASC";
-			$Results = mysql_query($selectSQL) or die(mysql_error());
-		
-		} else if($sorted=='uploader'){
-			$selectSQL = "select * from videos order by producer ASC";
-			$Results = mysql_query($selectSQL) or die(mysql_error());
-		
-		} else if($sorted=='site'){
-			$selectSQL = "select * from videos order by owner ASC";
-			$Results = mysql_query($selectSQL) or die(mysql_error());
-		
-		} else if($sorted=='category'){
-			$selectSQL = "select * from videos order by owner ASC";
-			$Results = mysql_query($selectSQL) or die(mysql_error());
-		
-		}else {
-			$selectSQL = "select * from videos";
-			$Results = mysql_query($selectSQL) or die(mysql_error());
-		}
-	*/
-
-	$selectSQL = "select * from videos";
-	$Results = mysql_query($selectSQL) or die(mysql_error());
-	
+	include("OoyalaApi.php");
+	//key api, secret api
+	$api = new OoyalaApi("V5dzkxOmUFf0dFju2v9bPHqRdgjC.0Ut0Y", "O7PUVcRVGXQx5HtqMlt7MoS8wrBr_FByN-J11-s_");
+	$players=$api->get("players");
 ?>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-        <title>Local Videos</title>
-        <script>
-        function find(valor){
-					document.location.href='index.php?sorted='+valor;}
-		</script>
-    </head>
- 
-    <body>
- 
-        <table width="700px;">
-        	<tr>
-        	<td><h2>Local Videos</h2></td>
-            <td><input type="button" value="Upload new video" onclick="window.location='upload.php'"></td>
-            <td><input type="button" value="Create new label" onclick="window.location='newlabel.php'"></td>
-            <td>Sorted by</td>
-            <td>
-	            <select id="sorted" onchange='find(this.value)'>
-	            	<option value="all" <?php if($sorted=='all'){echo 'selected';}?>>All Videos</option>
-	            	<option value="local" <?php if($sorted=='local'){echo 'selected';}?>>Only Local</option>
-	            	<option value="ooyala" <?php if($sorted=='ooyala'){echo 'selected';}?>>Uploaded to Ooyala</option>
-	            	<option value="date" <?php if($sorted=='date'){echo 'selected';}?>>By date</option>
-	            	<option value="uploader" <?php if($sorted=='uploader'){echo 'selected';}?>>By Uploader</option>
-	            	<option value="site" <?php if($sorted=='site'){echo 'selected';}?>>By Site</option>
-	            	<option value="category" <?php if($sorted=='category'){echo 'selected';}?>>Category</option>
-	            </select>
-            </td>
-        </table>
- 
-        <section>
-        	        
-	            <table border="1">
-	            	<tr>
-	            		<td>Prev Img</td>
-	            		<td>Title</td>
-	            		<td>Description</td>
-	            		<td>Preview</td>
-	            		<td>View Info</td>
-	            		<td>Edit</td>
-	            	</tr>
-	            	<?php 
-	            		while ($row= @ mysql_fetch_array($Results)){									
-							$idvideo=$row['id'];
-							$title=$row['title'];
-							$description=$row['description'];
-	            	 ?>
-		            	<form method="get" action="video.php" enctype="multipart/form-data">		            	
-			            	<tr>
-			            		<td><img src="" width="100"></td>
-			            		<td><?php echo $title ?></td>
-			            		<td><?php echo $description ?></td>
-							    <td><a href="videos/<?php echo $idvideo;?>.mp4" target="_blank">
-							    <input type="button" value="Preview"></a></td>			     		
-			            		<td><input type="hidden" name="idvideo" value="<?php echo $idvideo ?>">
-			            			<input type="submit" value="View Info">
-			            		</td>
-			            		<td><a href="videos.php?idvideo=<?php echo $idvideo;?>">
-							    <input type="button" value="Edit"></a></td>
-			            	</tr>
-		            	</form>
-	            	<?php } ?>
-	            </table>
-          
-        </section>
-    </body> 
+<head>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" media="all" href="js/jsDatePick_ltr.css" />
+	<script type="text/javascript" src="js/jsDatePick.min.1.3.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			new JsDatePick({
+				useMode:2,
+				target:"expire",
+				dateFormat:"%Y-%m-%d",
+			});
+		};
+	</script>
+</head>
+<body>
+
+	<?php include("menu.php"); ?>
+	<br/>
+
+	<form action="videoinsert.php" method="post" enctype="multipart/form-data"> 	
+		<h3>Video: Choose file to upload</h3>
+		Video File: <input type="file" name="archive">
+		
+		 
+		<h3>Video Title</h3>
+		
+		Video Title: <input type="text" name="titlename">
+		<p>Enter a title of the video. Viewers will be able to see this.</p>
+		
+		<h3>Video Description</h3>
+		Video Description: <input type="text" name="description">
+		<p>Enter a description of the video. Viewers will be able to see this.<p>
+		
+		<h3>Select A Player</h3>
+			<select name="playerid">
+				<?php foreach ($players->items as $value) { 
+					$pid=$value->id;
+					$p=$value->name;
+				?>				
+				<option value="<?php echo $pid;?>"><?php echo $p;?>
+				</option>			
+				<?php } ?>
+			</select>
+		
+		<h3>Expire this video</h3>
+		Total hours video should be live for <input type="text" name="expire" id="expire">
+		 
+		<h3>Select A Primary Category</h3>
+			<select name="label1">
+				<option value="c4c27d081ff84fc8b7353677907c41bc">News</option>
+				<option value="7bedaacf886f46a9afe8515dc32321ed">Sports</option>
+				<option value="476b257cc2cb4bfdb9ab73d00b309dae">Lifestyle</option>
+				<option value="c74feb4817444ef785e38d1d4aa886d6">Entertainment</option>
+			</select>
+		
+		<h3>Select Additional Categories</h3>
+			<select name="label2">
+				<option value="c4c27d081ff84fc8b7353677907c41bc">News</option>
+				<option value="7bedaacf886f46a9afe8515dc32321ed">Sports</option>
+				<option value="476b257cc2cb4bfdb9ab73d00b309dae">Lifestyle</option>
+				<option value="c74feb4817444ef785e38d1d4aa886d6">Entertainment</option>
+			</select>
+		
+		<h3>Select Additional Categories</h3>
+			<select name="label3">
+				<option value="c4c27d081ff84fc8b7353677907c41bc">News</option>
+				<option value="7bedaacf886f46a9afe8515dc32321ed">Sports</option>
+				<option value="476b257cc2cb4bfdb9ab73d00b309dae">Lifestyle</option>
+				<option value="c74feb4817444ef785e38d1d4aa886d6">Entertainment</option>
+			</select>
+		
+		<h3>Create Category</h3>
+		Create new category: <input type="text" name="labelnew"><br />
+		
+		
+		<h3>Upload Video To Local server</h3>
+		<input type="hidden" name="type" value="newvideo" >	
+		<input type="submit" value="Upload Video" onClick=																			                                            											"if(archive.value == ''){
+                                            alert('File is required'); 
+                                            archive.focus();
+                                            return false;
+                                            } else if(titlename.value == ''){
+                                            alert('Title is required'); 
+                                            titlename.focus();
+                                            return false;                                                
+                                            } else if(description.value == ''){
+                                            alert('Description is required'); 
+                                            description.focus();
+                                            return false;
+                                            }">		
+	</form>
+
+
+</body>
 </html>

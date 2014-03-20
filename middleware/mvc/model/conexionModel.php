@@ -46,6 +46,21 @@ abstract class conexion{
 		}
 	}
 
+	protected function queryInsert($query) {
+		$this->Connection();
+		if($this->myConn->query($query)){
+			$insert=$this->myConn->insert_id;
+			$this->CloseConnection();
+			return $insert;
+		}
+		else{
+			echo $this->myConn->error;
+			$this->msj = false;
+			$this->CloseConnection();
+			return $this->msj;
+		}
+	}
+
 	protected function queryResultados ($query){
 		$this->Connection();
 		$this->query_data = $this->myConn->query($query) or die ($this->myConn->error);
