@@ -10,6 +10,11 @@ session_start();
 	$selectSQL = "select * from videos";
 	$Results = mysql_query($selectSQL) or die(mysql_error());
 	
+	include("OoyalaApi.php");
+	//key api, secret api
+	$api = new OoyalaApi("V5dzkxOmUFf0dFju2v9bPHqRdgjC.0Ut0Y", "O7PUVcRVGXQx5HtqMlt7MoS8wrBr_FByN-J11-s_");
+	$players=$api->get("players");
+	
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -65,6 +70,7 @@ session_start();
 	            		<th>Title</th>
 	            		<th>Description</th>
 	            		<th>Ooyala date uploaded</th>
+	            		<th>Select Player</th>
 	            		<th>Preview</th>
 	            		<th>Edit</th>
 	            		<th>Copy code</th>
@@ -89,9 +95,21 @@ session_start();
 			            		<td><?php echo $title ?></td>
 			            		<td><?php echo $description ?></td>
 			            		<td><?php echo $dateooyala ?></td>
-							    <td><a href='http://www.junkyard.mx/ooyala/upload/preview.php?playerid=<?php echo $player; ?>&embed_code=<?php echo $embed_code; ?>' target="_blank">
-							    <input type="button" value="Preview"></a></td>
-			            		<td><a href="editooyala.php?idvideo=<?php echo $idvideo;?>">
+<form method="get" action="preview.php" target="_blank">
+			            		<td><select name="playerid" id="playerid">
+										<?php foreach ($players->items as $value) { 
+											$pid=$value->id;
+											$p=$value->name;
+										?>				
+										<option value="<?php echo $pid;?>" <?php if($pid==$player){echo 'selected';}?>><?php echo $p;?>
+										</option>			
+										<?php } ?>
+									</select>
+								</td>
+								<input type="hidden" value="<?php echo $embed_code; ?>" name="embed_code">
+							    <td><input type="submit" value="Preview"></a></td>
+</form>	    
+			            		<td><a href="videoeditooyala.php?embed_code=<?php echo $embed_code;?>">
 							    <input type="button" value="Edit"></a></td>
 							    <td><span class="clippy" data-text="<?php echo $embed_code; ?>"></span></td>
 			            	</tr>

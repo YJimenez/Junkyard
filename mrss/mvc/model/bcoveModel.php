@@ -77,7 +77,7 @@ class bcove {
 
 	}
 
-	public function getXML($fecha) {
+	public function getXML($fecha, $token) {
 		//converting fecha on unix date
 		$fecha=strtotime($fecha)*1000;
 		//echo $fecha;
@@ -86,13 +86,14 @@ class bcove {
 		//$fecha2=date('Y-m-d H:i:s', $fecha/1000);
 		//echo $fecha2;
 		$response=$this->getClips($fecha);
-
 		//getting the labels
 		
 		$xml="<channel>";
 		foreach($response as $asset) {
 			//getting labels
-			$labels="";
+			$labels="/".strtolower($token[0]['grupo']);
+			if($asset['labels'])
+				$labels.=", ";
 			foreach ($asset['labels'] as $value) {
 				if($value==end($asset['labels']))
 					$labels.="/".$value;

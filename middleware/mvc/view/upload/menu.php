@@ -7,19 +7,19 @@
 		            |
 	            </li>
 	             <li>
-		            <a href="localvideos.php">Local Videos</a>
+		            <a href="?section=localVideos">Local Videos</a>
 	            </li>
 	             <li>
 		            |
 	            </li>
 	             <li>
-		            <a href="ooyalavideos.php">Ooyala Videos</a>
+		            <a href="?section=ooyalaVideos">Ooyala Videos</a>
 	            </li>
 	             <li>
 		            |
 	            </li>
 	             <li>
-		            <a href="newlabel.php">New Label</a>
+		            <a href="?section=newLabel">New Label</a>
 	            </li>
             </ul>
         </section>

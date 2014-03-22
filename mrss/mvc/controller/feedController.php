@@ -4,7 +4,7 @@ if(isset($_GET['idCove'])&&isset($_GET['date'])) {
 	$obj_token=new token();
 	$token=$obj_token->getToken($_GET['idCove']);
 	$bcove=new bcove($token[0]['token']);
-	$xml=$bcove->getXML($_GET['date']);
+	$xml=$bcove->getXML($_GET['date'], $token);
 	echo '<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/"
      xmlns:dcterms="http://purl.org/dc/terms/"

@@ -17,3 +17,10 @@ function validateVideo () {
 	}
 	document.getElementById("videoForm").submit();
 }
+
+function call_cbox(id){
+	player=document.getElementById("playerid"+id).value;
+	embed=document.getElementById("embed_code"+id).value;
+	//alert(player+"-"+embed);
+    $.colorbox({width:"640px", height:"400px", iframe:true, href:"embedCode.php?player="+player+"&embed_code="+embed+"&height=420&width=260"});
+}
