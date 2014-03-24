@@ -38,7 +38,9 @@
 	            		<th>Select Player</th>
 	            		<th>Select Playlists</th>
 	            		<th>Preview</th>
+	            		<?php if($_SESSION['ooyalaUser']['admin']||$_SESSION['ooyalaUser']['profile']==1) { ?>
 	            		<th>Edit</th>
+	            		<?php } ?>
 	            		<th>Embed code</th>
 	            	</tr>
 	            	<?php 
@@ -86,9 +88,10 @@
 
 								<input type="hidden" value="<?php echo $embed_code; ?>" name="embed_code" id="embed_code<?php echo $i; ?>">
 							    <td><input type="submit" value="Preview"></a></td>
-</form>	    
+</form>	    					<?php if($_SESSION['ooyalaUser']['admin']||$_SESSION['ooyalaUser']['profile']==1) { ?>
 			            		<td><a href="?section=editOoyala&embed_code=<?php echo $embed_code;?>">
 							    <input type="button" value="Edit"></a></td>
+							    <?php } ?>
 							    <td align="center"><input type="button" value="Get Embed Code" onclick="call_cbox(<?php echo $i; ?>);"></td>
 			            	</tr>
 		            	 <script>						
