@@ -8,7 +8,7 @@
 	<br/>
  <?php if($results->id) { ?>
                     <br>
-                        <div class="success">Label <?php echo $titulo; ?> has been edited</div>
+                        <div class="success">Playlist <?php echo $titulo; ?> has been created</div>
                    <br>
                     <?php } ?>
 	
@@ -18,18 +18,29 @@
 				<td><strong>Create new Playlist:</strong></td>
 				<td><input type="text" name="name"></td>
 			</tr>
+			<?php foreach ($assets->items as $value) { ?>	
 			<tr>
-								<td><input type="submit" value="Create"></td>
-
+				<td><input type="checkbox" name="option[]" value="<?php echo $value->embed_code; ?>"></td>
+				<td><?php echo $value->name; ?></td>
+			</tr>
+			<?php } ?>
+			<tr>
+				<td><input type="submit" value="Create"></td>
 				<td></td>
 			</tr>
+			
 		</table>
 	
 	</form>
 	</body>
 	<?php 
-		echo "Results:<br><pre>Results:<br>";		
+		echo "<br><pre>Results:<br>";		
+		echo "Playlist nuevo";
+		print_r($results);
+		
+		
+		echo "<br><pre>Results:<br>";		
 		echo "Playlist";
 		print_r($playlist);
-		?>
+	?>
 </html>
