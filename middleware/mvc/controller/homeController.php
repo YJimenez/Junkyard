@@ -5,7 +5,7 @@ header("Location: index.php?section=login");
 
 if($_POST){
 	$uploader=new upload();
-	if($uploader->uploadVideoLocal($_POST))
+	if($uploader->uploadVideoLocal($_POST, $_SESSION['ooyalaUser']['property']))
 		$success=1;
 }
 
