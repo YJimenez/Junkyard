@@ -22,6 +22,12 @@
 	             <li>
 		            <a href="?section=newLabel">New Label</a>
 	            </li>
+	            <li>
+		            |
+	            </li>
+	            <li>
+		            <a href="?section=newPlaylist">New Playlist</a>
+	            </li>
 	            <?php if($_SESSION['ooyalaUser']['admin']) { ?>
 	            <li>
 		            |

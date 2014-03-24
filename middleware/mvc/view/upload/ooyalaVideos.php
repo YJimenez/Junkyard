@@ -91,9 +91,9 @@
 							    <input type="button" value="Edit"></a></td>
 							    <td align="center"><input type="button" value="Get Embed Code" onclick="call_cbox(<?php echo $i; ?>);"></td>
 			            	</tr>
-		            	 <script>						
+								<script>						
 								        $('#playlists'+<?php echo $i; ?>).multipleSelect();
-								    </script>
+								</script>
 	            	<?php
 
 	            	$i++;
