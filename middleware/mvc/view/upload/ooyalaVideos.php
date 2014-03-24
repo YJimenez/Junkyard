@@ -10,12 +10,14 @@
 
 	<link href="css/upload/style.css" rel="stylesheet" type="text/css" />
 	<link href="css/colorbox.css" rel="stylesheet" type="text/css" />
+	 <link href="css/multiple-select.css" rel="stylesheet"/>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 	<script src="js/upload/main.js" type="text/javascript"></script>
 	<script src="js/jquery.colorbox-min.js" type="text/javascript"></script>
 
-	
+	 <script src="js/jquery.multiple.select.js"></script>
+   									
     </head>
  
     <body>
@@ -34,6 +36,7 @@
 	            		<th>Description</th>
 	            		<th>Ooyala date uploaded</th>
 	            		<th>Select Player</th>
+	            		<th>Select Playlists</th>
 	            		<th>Preview</th>
 	            		<th>Edit</th>
 	            		<th>Embed code</th>
@@ -66,6 +69,21 @@
 										<?php } ?>
 									</select>
 								</td>
+								
+								<td><select  multiple="multiple" id="playlists<?php echo $i; ?>">
+										<?php foreach ($plists->items as $value) { 
+											$pid=$value->id;
+											$p=$value->name;
+										?>				
+										<option value="<?php echo $pid;?>"  <?php if($pid==$player){echo 'selected';}?> ><?php echo $p;?>
+										</option>			
+										<?php } ?>
+									</select>
+
+									
+
+								</td>	
+
 								<input type="hidden" value="<?php echo $embed_code; ?>" name="embed_code" id="embed_code<?php echo $i; ?>">
 							    <td><input type="submit" value="Preview"></a></td>
 </form>	    
@@ -73,14 +91,18 @@
 							    <input type="button" value="Edit"></a></td>
 							    <td align="center"><input type="button" value="Get Embed Code" onclick="call_cbox(<?php echo $i; ?>);"></td>
 			            	</tr>
-		            	
+		            	 <script>						
+								        $('#playlists'+<?php echo $i; ?>).multipleSelect();
+								    </script>
 	            	<?php
+
 	            	$i++;
 	            	 } ?>
 	            	</form>
     </table>
           
         </section>
+        
     </body> 
     
 </html>

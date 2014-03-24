@@ -6,11 +6,19 @@ ul.menu li{
 	list-style: none;
 	display: inline-block;
 	float: left;
-	margin-left: 10px;
+	margin-left: 5px;
 }
-ul{
-	width: 400px;
-	margin: 0px auto;
+
+ul.menu{
+	text-align: center;
+	width: 600px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin: 0px;
+	font-size: 12px;
+	font-weight: normal;
+
+	
+	
 }
 .success {
 	text-align: center;

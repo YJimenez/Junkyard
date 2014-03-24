@@ -21,6 +21,9 @@ function validateVideo () {
 function call_cbox(id){
 	player=document.getElementById("playerid"+id).value;
 	embed=document.getElementById("embed_code"+id).value;
+
+	playlists=$( "#playlists"+id).val()
+
 	//alert(player+"-"+embed);
-    $.colorbox({width:"640px", height:"400px", iframe:true, href:"embedCode.php?player="+player+"&embed_code="+embed+"&height=420&width=260"});
+    $.colorbox({width:"640px", height:"400px", iframe:true, href:"embedCode.php?player="+player+"&embed_code="+embed+"&playlists="+playlists+"&height=260&width=420"});
 }
