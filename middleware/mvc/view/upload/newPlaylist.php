@@ -15,13 +15,19 @@
 	<form action="" method="post" enctype="multipart/form-data"> 
 		<table>		
 			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
 				<td><strong>Create new Playlist:</strong></td>
 				<td><input type="text" name="name"></td>
 			</tr>
+			<tr>
+				<td colspan="2"><strong>Add videos to playlist:</strong></td>
+			</tr>
 			<?php foreach ($assets->items as $value) { ?>	
 			<tr>
-				<td><input type="checkbox" name="option[]" value="<?php echo $value->embed_code; ?>"></td>
-				<td><?php echo $value->name; ?></td>
+				<td colspan="2"><input type="checkbox" name="option[]" value="<?php echo $value->embed_code; ?>"> <?php echo $value->name; ?></td>
 			</tr>
 			<?php } ?>
 			<tr>
