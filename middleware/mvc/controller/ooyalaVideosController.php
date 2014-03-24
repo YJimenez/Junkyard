@@ -10,7 +10,7 @@ header("Location: index.php?section=login");
 	$api = new OoyalaApi("V5dzkxOmUFf0dFju2v9bPHqRdgjC.0Ut0Y", "O7PUVcRVGXQx5HtqMlt7MoS8wrBr_FByN-J11-s_");
 	$players=$api->get("players");
 
-	$plists=$api->get("playlists");
+	$plists=$api->get("/v2/playlists");
 
 	if(isset($_GET['success'])) {
 		extract($_GET);
