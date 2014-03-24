@@ -1,13 +1,14 @@
 <?php 
 class upload extends conexion {
-	public function uploadVideoLocal($arreglo, $idProperty=0) {
+	public function uploadVideoLocal($arreglo, $idProperty=0, $owner='') {
 		extract($arreglo);
 		if($type=='newvideo'){
 			$file= $_FILES['archive']['tmp_name'];
 			$size=$_FILES['archive']['size'];
 			$name=$_FILES['archive']['name'];
 
-			$insertvSQL = "INSERT INTO videos (file_size, name, tmp_name, title, description, owner, producer, datelocal, fk_idProperty) VALUES ('".$size."','".$name."','".$file."','".$title."','".$description."','".$owner."','".$producer."','".date('Y-m-d H:i:s')."', '$idProperty')";
+			$insertvSQL = "INSERT INTO videos (file_size, name, tmp_name, title, description, owner, producer, datelocal, fk_idProperty) VALUES ('".$size."','".$name."','".$file."','".$titlename."','".$description."','".$owner."','".$producer."','".date('Y-m-d H:i:s')."', '$idProperty')";
+			
 			$idvideo = $this->queryInsert($insertvSQL);
 			move_uploaded_file($file,"videos/". $idvideo.".mp4");
 		}
