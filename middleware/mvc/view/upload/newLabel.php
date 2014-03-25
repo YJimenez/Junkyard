@@ -4,9 +4,14 @@
 </head>
 	<body>
 	
-	<?php include("view/upload/menu.php"); ?>
-	<br/>
- <?php if($results->id) { ?>
+	<table class="wrap">
+     <tr><td align="center">
+		 <?php include("view/upload/menu.php"); ?>
+     </td></tr>
+     <tr><td>
+	 <br/>
+
+	 				<?php if($results->id) { ?>
                     <br>
                         <div class="success">Label <?php echo $titulo; ?> has been edited</div>
                    <br>
@@ -26,5 +31,7 @@
 		</table>
 	
 	</form>
+     </td></tr>
+     </table>
 	</body>
 </html>

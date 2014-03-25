@@ -35,51 +35,64 @@
  
     <body>
     
-    <?php include("view/upload/menu.php"); ?>
+    <table class="wrap">
+     <tr><td align="center">
+		 <?php include("view/upload/menu.php"); ?>
+     </td></tr>
+     <tr><td>
 	 <br/>
- <?php if($success) { ?>
+	 				<?php if($success) { ?>
                     <br>
                         <div class="success">The <?php  echo $video[0]['title']; ?> video has been uploaded to ooyala</div>
                    <br>
                     <?php } ?>
-        <table width="600px;">
-        	<tr>
-        	<td><h2>Local Videos</h2></td>
-            <!-- <td>Sorted by</td>
-            <td>
-	            <select id="sorted" onchange='find(this.value)'>
-	            	<option value="all" <?php if($sorted=='all'){echo 'selected';}?>>All Videos</option>
-	            	<option value="local" <?php if($sorted=='local'){echo 'selected';}?>>Only Local</option>
-	            	<option value="ooyala" <?php if($sorted=='ooyala'){echo 'selected';}?>>Uploaded to Ooyala</option>
-	            	<option value="date" <?php if($sorted=='date'){echo 'selected';}?>>By date</option>
-	            	<option value="uploader" <?php if($sorted=='uploader'){echo 'selected';}?>>By Uploader</option>
-	            	<option value="site" <?php if($sorted=='site'){echo 'selected';}?>>By Site</option>
-	            	<option value="category" <?php if($sorted=='category'){echo 'selected';}?>>Category</option>
-	            </select>
-            </td>-->
+
+
+        <table width="100%;" style="margin-bottom:30px;">
+        	<form action="" method="post">
+	        	<tr>
+		        	<td rowspan="2" width="76%;"><h2>Local Videos</h2></td>
+		            <td><input type="submit" value="search"></td>
+		            <td><input type="text" name="search" id="search" value="<?php  if(isset($_POST['search'])!=NULL){echo $_POST['search'];}?>"></td>
+	        	</tr>
+        	</form>
+        	<!--<tr>
+        		<td>Sorted by</td>
+	            <td>
+		            <select id="sorted" onchange='find(this.value)'>
+		            	<option value="all" <?php if($sorted=='all'){echo 'selected';}?>>All Videos</option>
+		            	<option value="local" <?php if($sorted=='local'){echo 'selected';}?>>Only Local</option>
+		            	<option value="ooyala" <?php if($sorted=='ooyala'){echo 'selected';}?>>Uploaded to Ooyala</option>
+		            	<option value="date" <?php if($sorted=='date'){echo 'selected';}?>>By date</option>
+		            	<option value="uploader" <?php if($sorted=='uploader'){echo 'selected';}?>>By Uploader</option>
+		            	<option value="site" <?php if($sorted=='site'){echo 'selected';}?>>By Site</option>
+		            	<option value="category" <?php if($sorted=='category'){echo 'selected';}?>>Category</option>
+		            </select>
+	            </td>
+        	</tr>-->
         </table>
  
         <section>		
-	            <table class="table" cellpadding="8">
+	            <table class="table" cellpadding="8" width="100%;">
 	            	<tr>
 	            		<th>Title</th>
 	            		<th>Description</th>
 	            		<th>Local date uploaded</th>
 	            		<th>Preview</th>
-	            		<?php if($_SESSION['ooyalaUser']['admin']) { ?>
 	            		<th>Edit</th>
-	            		<?php } ?>
 	            		<th>Copy</th>
-	            		<?php if($_SESSION['ooyalaUser']['admin']||$_SESSION['ooyalaUser']['profile']==1) { ?>
-	            		<th>Upload to vendor</th>
-	            		<?php } ?>
+	            		<th>Authorize</th>
 	            	</tr>
 	            	<?php 
-	            		foreach($videos as $video) {								
-							
-							
-	
-	if($video['status']!=1){						
+		            	if ($videos == NULL){
+			        ?>	
+			        <tr>
+	            		<th class="errorS" colspan="7">Videos not found</th>
+	            	</tr>		        
+                   <?php
+		            	}else{
+		            		foreach($videos as $video) {								
+							if($video['status']!=1){						
 	            	 ?>
 		            		            	
 			            	<tr>
@@ -88,28 +101,25 @@
 			            		<td><?php echo $video['datelocal'] ?></td>
 							    <td><a href="videos/<?php echo $video['id'];?>.mp4" target="_blank">
 							    <input type="button" value="Preview"></a></td>
-			            		<?php if($_SESSION['ooyalaUser']['admin']) { ?>
 			            		<td><a href="?section=editVideo&idvideo=<?php echo $video['id'];?>">
 							    <input type="button" value="Edit"></a></td>
-							     <?php } ?>
-
 							    <td><span class="clippy" data-text="http://junkyard.mx/middleware/upload/videos/<?php echo $video['id']; ?>.mp4"></span></td>
-							     <?php if($_SESSION['ooyalaUser']['admin']||$_SESSION['ooyalaUser']['profile']==1) { ?>
+							    
 							    <td>
 								 
 								<a href="?section=auth&id=<?php echo $video['idInfo'];?>">
-							    <input type="button" value="Upload">
+							    <input type="button" value="Authorize">
 							    </a>
 							    
 							    </td>
-							    <?php } ?>
-
 			            	</tr>
 		            	
-	            	<?php } ?>
-	            	</form>
-       <?php } ?>  
+	            	<?php }}} ?>
+
+	            	</form> 
           
         </section>
+        </td></tr>
+       </table>
     </body> 
 </html>

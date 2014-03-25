@@ -50,14 +50,19 @@
 	</script>
 </head>
 
-<?php include("view/upload/menu.php"); ?>
-<br/>
+<table class="wrap">
+     <tr><td align="center">
+		 <?php include("view/upload/menu.php"); ?>
+     </td></tr>
+     <tr><td align="center">
+	 <br/>
+	 
  <?php if($success==1) { ?>
                     <br>
                         <div class="success">The <?php  echo $video['title']; ?> video has been edited</div>
                    <br>
                     <?php } ?>
-<h1>Edit Video</h1>
+<h1>Edit <span style="color:#971d1d"><?php echo $video['title'];?></span> Video</h1>
 	<a href="videos/<?php echo $video['idvideo'];?>.mp4" target="_blank">
 	<input type="button" value="Preview"></a>
 	<span class="clippy" data-text="http://junkyard.mx/middleware/upload/videos/<?php echo $video['idvideo']; ?>.mp4"></span>
@@ -158,4 +163,6 @@
 		<input type="submit" value="Update">
 </form>
 
+</td></tr>
+</table
 </html>

@@ -10,12 +10,10 @@ if(!$permiso->vPermiso("1,3", $_SESSION['ooyalaUser']['profile'])&&!$_SESSION['o
 		exit();
 	}
 
-	$uploader=new upload();
-	$videos=$uploader->getVideosToOoyala();
+	
 
 	$api = new OoyalaApi("V5dzkxOmUFf0dFju2v9bPHqRdgjC.0Ut0Y", "O7PUVcRVGXQx5HtqMlt7MoS8wrBr_FByN-J11-s_");
 	$players=$api->get("players");
-
 	$plists=$api->get("/v2/playlists");
 
 	if(isset($_GET['success'])) {
@@ -23,8 +21,13 @@ if(!$permiso->vPermiso("1,3", $_SESSION['ooyalaUser']['profile'])&&!$_SESSION['o
 		$video=$uploader->getVideoToOoyala($_GET['success']);
 	}
 
-	//echo "<pre>";
-	//print_r($videos);
+	if(isset($_POST['search'])) {
+		$uploader=new playlist();
+		$videos=$uploader->getSearchOoyala($_POST['search']);
+	} else { 
+		$uploader=new upload();
+		$videos=$uploader->getVideosToOoyala();
+	}
 
 //Archivo de la login
 require_once('view/upload/ooyalaVideos.php');
