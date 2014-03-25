@@ -100,6 +100,16 @@ class bcove {
 				else
 					$labels.="/".$value.", ";
 			}
+
+			$asset['name']=preg_replace("/[^A-Za-z0-9]/", " ", $asset['name']);
+			$asset['description']=preg_replace("/[^A-Za-z0-9]/", " ", $asset['description']);
+
+			$asset['name'] = preg_replace('/&[^; ]{0,6}.?/e', "((substr('\\0',-1) == ';') ? '\\0' : '&amp;'.substr('\\0',1))", $asset['name']);
+			$asset['description'] = preg_replace('/&[^; ]{0,6}.?/e', "((substr('\\0',-1) == ';') ? '\\0' : '&amp;'.substr('\\0',1))", $asset['description']);
+			$asset['flvrul'] = preg_replace('/&[^; ]{0,6}.?/e', "((substr('\\0',-1) == ';') ? '\\0' : '&amp;'.substr('\\0',1))", $asset['flvrul']);
+			$asset['th'] = preg_replace('/&[^; ]{0,6}.?/e', "((substr('\\0',-1) == ';') ? '\\0' : '&amp;'.substr('\\0',1))", $asset['th']);
+
+
 			$xml.='<item>     
             <media:content url="'.$asset['flvrul'].'" />
             <media:thumbnail url="'.$asset['th'].'" />

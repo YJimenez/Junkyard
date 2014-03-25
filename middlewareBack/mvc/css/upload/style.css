@@ -1,0 +1,31 @@
+index.php
+.table tr:nth-child(even) {background: #fff}
+.table tr:nth-child(odd) {background: #EDEDED}
+
+ul.menu li{
+	list-style: none;
+	display: inline-block;
+	float: left;
+	margin-left: 5px;
+}
+
+ul.menu{
+	text-align: center;
+	width: 600px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin: 0px;
+	font-size: 12px;
+	font-weight: normal;
+
+	
+	
+}
+.success {
+	text-align: center;
+  background-color: green;
+  color: white;
+}
+.errorS {
+  background-color: red;
+  color: white;
+}
