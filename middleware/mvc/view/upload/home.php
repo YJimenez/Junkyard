@@ -53,30 +53,27 @@
 			</select>
 		
 		<h3>Expire this video</h3>
-		Total hours video should be live for <input type="text" name="expire" id="expire">
+		Total hours video should be live for <input type="text" name="expire" id="expire" readonly="readonly">
 		 
 		<h3>Select A Primary Category</h3>
 			<select name="label1">
-				<option value="c4c27d081ff84fc8b7353677907c41bc">News</option>
-				<option value="7bedaacf886f46a9afe8515dc32321ed">Sports</option>
-				<option value="476b257cc2cb4bfdb9ab73d00b309dae">Lifestyle</option>
-				<option value="c74feb4817444ef785e38d1d4aa886d6">Entertainment</option>
+				<?php foreach($labels->items as $label) { ?>	
+				<option value="<?php echo $label->id; ?>"><?php echo $label->name; ?></option>
+			<?php } ?>
 			</select>
 		
 		<h3>Select Additional Categories</h3>
 			<select name="label2">
-				<option value="c4c27d081ff84fc8b7353677907c41bc">News</option>
-				<option value="7bedaacf886f46a9afe8515dc32321ed">Sports</option>
-				<option value="476b257cc2cb4bfdb9ab73d00b309dae">Lifestyle</option>
-				<option value="c74feb4817444ef785e38d1d4aa886d6">Entertainment</option>
+				<?php foreach($labels->items as $label) { ?>	
+				<option value="<?php echo $label->id; ?>"><?php echo $label->name; ?></option>
+			<?php } ?>
 			</select>
 		
 		<h3>Select Additional Categories</h3>
 			<select name="label3">
-				<option value="c4c27d081ff84fc8b7353677907c41bc">News</option>
-				<option value="7bedaacf886f46a9afe8515dc32321ed">Sports</option>
-				<option value="476b257cc2cb4bfdb9ab73d00b309dae">Lifestyle</option>
-				<option value="c74feb4817444ef785e38d1d4aa886d6">Entertainment</option>
+				<?php foreach($labels->items as $label) { ?>	
+				<option value="<?php echo $label->id; ?>"><?php echo $label->name; ?></option>
+			<?php } ?>
 			</select>
 		
 		<h3>Create Category</h3>

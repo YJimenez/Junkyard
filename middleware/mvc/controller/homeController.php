@@ -3,9 +3,17 @@
 if(!isset($_SESSION['ooyala']))
 header("Location: index.php?section=login");
 
+//profiles
+if($_SESSION['ooyalaUser']['profile']=='3'&&$_SESSION['ooyalaUser']['admin']==0)
+	header("Location: index.php?section=ooyalaVideos");
+else if($_SESSION['ooyalaUser']['profile']!='1'&&$_SESSION['ooyalaUser']['admin']==0)
+	header("Location: index.php?section=localVideos");
+
+
+
 if($_POST){
 	$uploader=new upload();
-	if($uploader->uploadVideoLocal($_POST, $_SESSION['ooyalaUser']['property']))
+	if($uploader->uploadVideoLocal($_POST, $_SESSION['ooyalaUser']['property'], $_SESSION['ooyalaUser']['idlogin']))
 		$success=1;
 }
 
