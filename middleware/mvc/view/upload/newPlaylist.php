@@ -25,11 +25,16 @@
 			<tr>
 				<td colspan="2"><strong>Add videos to playlist:</strong></td>
 			</tr>
-			<?php foreach ($assets->items as $value) { ?>	
+			<?php foreach($videos as $video) {?>	
+			<tr>
+				<td colspan="2"><input type="checkbox" name="option[]" value="<?php echo $video['embed_code']; ?>"> <?php echo $video['title']; ?></td>
+			</tr>
+			<?php } ?>
+			<?php /*foreach ($assets->items as $value) { ?>	
 			<tr>
 				<td colspan="2"><input type="checkbox" name="option[]" value="<?php echo $value->embed_code; ?>"> <?php echo $value->name; ?></td>
 			</tr>
-			<?php } ?>
+			<?php } */?>
 			<tr>
 				<td><input type="submit" value="Create"></td>
 				<td></td>
