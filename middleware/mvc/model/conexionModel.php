@@ -9,7 +9,7 @@ abstract class conexion{
 
 	
 	private $user_db = 'root';
-	private $password_db = 'mysql';
+	private $password_db = '';
 	private $name_db = 'ooyala';
 
 	private $link_conexion_db;
