@@ -1,7 +1,7 @@
 <?php
-class users extends conexion {
-	public function getUser($id) {
-		$query="select * from usuarios where idlogin='$id'";
+class playlist extends conexion {
+	public function getVideos($id) {
+		$query="select * from videos";
 		$response=$this->queryResultados($query);
 		return $response;
 	}
