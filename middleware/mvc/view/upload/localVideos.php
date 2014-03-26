@@ -79,9 +79,11 @@
 	            		<th>Description</th>
 	            		<th>Local date uploaded</th>
 	            		<th>Preview</th>
+	            		<?php if($_SESSION['ooyalaUser']['admin']) { ?>
 	            		<th>Edit</th>
+	            		<?php } ?>
 	            		<th>Copy</th>
-	            		<th>Authorize</th>
+	            		<th>Upload to vendor</th>
 	            	</tr>
 	            	<?php 
 		            	if ($videos == NULL){
@@ -101,14 +103,16 @@
 			            		<td><?php echo $video['datelocal'] ?></td>
 							    <td><a href="videos/<?php echo $video['id'];?>.mp4" target="_blank">
 							    <input type="button" value="Preview"></a></td>
+			            		<?php if($_SESSION['ooyalaUser']['admin']) { ?>
 			            		<td><a href="?section=editVideo&idvideo=<?php echo $video['id'];?>">
 							    <input type="button" value="Edit"></a></td>
+							    <?php } ?>
 							    <td><span class="clippy" data-text="http://junkyard.mx/middleware/upload/videos/<?php echo $video['id']; ?>.mp4"></span></td>
 							    
 							    <td>
 								 
 								<a href="?section=auth&id=<?php echo $video['idInfo'];?>">
-							    <input type="button" value="Authorize">
+							    <input type="button" value="Upload">
 							    </a>
 							    
 							    </td>

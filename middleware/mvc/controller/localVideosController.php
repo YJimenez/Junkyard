@@ -10,7 +10,7 @@ header("Location: index.php?section=login");
 		exit();
 	}
 	
-
+	$uploader=new upload();
 	if(isset($_GET['success'])) {
 		extract($_GET);
 		$video=$uploader->getVideoToOoyala($_GET['success']);
@@ -18,11 +18,11 @@ header("Location: index.php?section=login");
 	
 
 	if(isset($_POST['search'])) {
-		$uploader=new playlist();
-		$videos=$uploader->getSearch($_POST['search']);
+		
+		$videos=$uploader->getSearch($_POST['search'], $_SESSION['ooyalaUser']['property']);
 	} else { 
-		$uploader=new upload();
-		$videos=$uploader->getVideosLocal();
+		
+		$videos=$uploader->getVideosLocal(0,$_SESSION['ooyalaUser']['property']);
 	}
 	//echo "<pre>";
 	//print_r($videos);

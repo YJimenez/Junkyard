@@ -18,11 +18,14 @@ class upload extends conexion {
 		return true;
 	}
 
-	public function getVideosLocal($id=0) {
+	public function getVideosLocal($id=0, $property=0) {
+		$aux="";
+		if($property)
+			$aux=" where a.fk_idProperty='$property'";
 		if($id)
 			$selectSQL="select a.*, a.id, b.id as idInfo, b.* from videos as a inner join videosinfo as b on a.id=b.idvideo where a.id='$id'";
 		else
-			$selectSQL = "select a.*, b.id as idInfo from videos as a inner join videosinfo as b on a.id=b.idvideo";
+			$selectSQL = "select a.*, b.id as idInfo from videos as a inner join videosinfo as b on a.id=b.idvideo".$aux;
 		$response = $this->queryResultados($selectSQL);
 		return $response;
 	}
@@ -67,8 +70,11 @@ class upload extends conexion {
 
 	}
 	
-	public function getVideosToOoyala() {
-		$selectSQL = "select a.*, b.*, a.id from videosinfo as a inner join videos as b on a.idvideo=b.id  where b.status='1'";
+	public function getVideosToOoyala($property=0) {
+		$aux="";
+		if($property)
+			$aux=" and b.fk_idProperty='$property'";
+		$selectSQL = "select a.*, b.*, a.id from videosinfo as a inner join videos as b on a.idvideo=b.id  where b.status='1'".$aux;
 		$response=$this->queryResultados($selectSQL);
 		return $response;
 
@@ -234,6 +240,30 @@ class upload extends conexion {
 	
 		}
 		return true;
+	}
+
+	//Yair's functions
+	//
+	
+	public function getVideos() {
+		$query="select * from videos where status=1";
+		$response=$this->queryResultados($query);
+		return $response;
+	}
+	public function getSearch($search, $property) {
+		if($property)
+			$aux=" and fk_idProperty='$property'";
+		$query="select * from videos where (title LIKE '%$search%' or description LIKE '%$search%') and status='0'".$aux;
+		$response=$this->queryResultados($query);
+		return $response;
+	}
+	public function getSearchOoyala($search, $property) {
+		$aux="";
+		if($property)
+			$aux=" and b.fk_idProperty='$property'";
+		$selectSQL = "select a.*, b.*, a.id from videosinfo as a inner join videos as b on a.idvideo=b.id  where b.status='1' and (b.title LIKE '%$search%' or b.description LIKE '%$search%')".$aux;
+		$response=$this->queryResultados($selectSQL);
+		return $response;
 	}
 }
 ?>
