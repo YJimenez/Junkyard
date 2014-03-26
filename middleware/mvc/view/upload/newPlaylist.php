@@ -51,9 +51,9 @@
 	</form>
 	</body>
 	<?php 
-		echo "<br><pre>Results:<br>";		
-		echo "Playlist nuevo";
-		print_r($results);
+	//	echo "<br><pre>Results:<br>";		
+	//	echo "Playlist nuevo";
+	//	print_r($results);
 	?>
 </td></tr>
 </table>
