@@ -19,7 +19,7 @@ if($_POST){
 
 	$api = new OoyalaApi("V5dzkxOmUFf0dFju2v9bPHqRdgjC.0Ut0Y", "O7PUVcRVGXQx5HtqMlt7MoS8wrBr_FByN-J11-s_");
 	$players=$api->get("players");
-
+	$labels=$api->get("labels");
 //Archivo de la login
 require_once('view/upload/home.php');
 ?>
