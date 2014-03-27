@@ -265,5 +265,32 @@ class upload extends conexion {
 		$response=$this->queryResultados($selectSQL);
 		return $response;
 	}
+	public function share($arreglo) {
+		extract($arreglo);
+		$this->querySimple("delete from shareVideos where idVideo='$idVideo'");
+		foreach($properties as $property) {
+			$this->querySimple("insert into shareVideos (idVideo, idProperty, idUser, propertyToShare) values ('$idVideo', '$idProperty', '$idUser', '$property')"); 
+		}
+		return 1;
+	}
+	public function getShared($idVideo) {
+		$query="select * from shareVideos where idVideo='$idVideo'";
+		$response=$this->queryResultados($query);
+		if($response)
+			foreach($response as $value)
+				$array[]=$value['propertyToShare'];
+		return $array;
+	} 
+	public function getSharedVideos($property) {
+		$query="select * from shareVideos where propertyToShare='$property'";
+		$response=$this->queryResultados($query);
+		if($response)
+			foreach($response as $value) {
+				$aux=$this->getVideoToOoyala($value['idVideo']);
+				$array[]=$aux[0];
+			}
+		return $array;
+
+	}
 }
 ?>

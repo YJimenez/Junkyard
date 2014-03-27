@@ -29,7 +29,7 @@
      <tr><td>
 	 <br/>
 	 
-        <table width="100%;" style="margin-bottom:30px;">
+        <table width="100%;" style="margin-bottom:10px;">
         	<form action="" method="post">
 	        	<tr>
 		        	<td rowspan="2" width="76%;"><h2>Videos in Ooyala</h2></td>
@@ -66,6 +66,9 @@
 	            		<th>Edit</th>
 	            		<?php } ?>
 	            		<th>Embed code</th>
+	            		<?php if($_SESSION['ooyalaUser']['admin']||$_SESSION['ooyalaUser']['profile']==1) { ?>
+	            		<th>Share</th>
+	            		<?php } ?>
 	            	</tr>
 	            	<?php 
 		            	if ($videos == NULL){
@@ -120,13 +123,119 @@
 			            		<?php if($_SESSION['ooyalaUser']['admin']||$_SESSION['ooyalaUser']['profile']==1) { ?>
 			            		<td><a href="?section=editOoyala&embed_code=<?php echo $embed_code;?>">
 							    <input type="button" value="Edit"></a></td>
+							   
 							    <?php } ?>
 							    <td align="center"><input type="button" value="Get Embed Code" onclick="call_cbox(<?php echo $i; ?>);"></td>
+							    <?php if($_SESSION['ooyalaUser']['admin']||$_SESSION['ooyalaUser']['profile']==1) { ?>
+							     <td><a href="?section=shareVideo&idVideo=<?php echo $idvideo; ?>">
+							    	<input type="button" value="Share"></a>
+								</td>
+								<?php } ?>
 			            	</tr>
 								
 	            	<?php $i++;}} ?>
 	            	
 					</table>
+
+					<?php if($sharedVideos) { ?>
+					
+
+					 <table width="100%;" style="margin-bottom:10px;">
+        	<form action="" method="post">
+	        	<tr>
+		        	<td rowspan="2" width="76%;"><h2>Shared Videos</h2></td>
+		           
+	        	</tr>
+        	</form>
+        	<!--<tr>
+        		<td>Sorted by</td>
+	            <td>
+		            <select id="sorted" onchange='find(this.value)'>
+		            	<option value="all" <?php if($sorted=='all'){echo 'selected';}?>>All Videos</option>
+		            	<option value="local" <?php if($sorted=='local'){echo 'selected';}?>>Only Local</option>
+		            	<option value="ooyala" <?php if($sorted=='ooyala'){echo 'selected';}?>>Uploaded to Ooyala</option>
+		            	<option value="date" <?php if($sorted=='date'){echo 'selected';}?>>By date</option>
+		            	<option value="uploader" <?php if($sorted=='uploader'){echo 'selected';}?>>By Uploader</option>
+		            	<option value="site" <?php if($sorted=='site'){echo 'selected';}?>>By Site</option>
+		            	<option value="category" <?php if($sorted=='category'){echo 'selected';}?>>Category</option>
+		            </select>
+	            </td>
+        	</tr>-->
+        </table>
+ 
+        <section>		
+	            <table class="table" cellpadding="8" width="100%;">
+	            	<tr>
+	            		<th>Title</th>
+	            		<th>Description</th>
+	            		<th width="220px">Ooyala date uploaded</th>
+	            		<th>Select Player</th>
+	            		<th>Select Playlists</th>
+	            		<th>Preview</th>
+	            		
+	            		<th>Embed code</th>
+	            		
+	            	</tr>
+	            	<?php 
+		            	if ($sharedVideos == NULL){
+			        ?>	
+			        <tr>
+	            		<th class="errorS" colspan="8">Videos not found</th>
+	            	</tr>		        
+                   <?php
+		            	}else{ 
+	            		
+	            		foreach($sharedVideos as $video) {									
+							$idvideo=$video['idvideo'];
+							$title=$video['title'];
+							$description=$video['description'];
+							$dateooyala=$video['datevendor'];
+							$embed_code=$video['embed_code'];
+							$status=$video['status'];							
+							$player=$video['player'];				
+	            	 ?>
+		            		            	
+			            	<tr>
+			            		<td><?php echo $title ?></td>
+			            		<td><?php echo $description ?></td>
+			            		<td><?php echo $dateooyala ?></td>
+<form method="get" action="preview.php" target="_blank">
+			            		<td><select name="playerid" id="playerid<?php echo $i; ?>">
+										<?php foreach ($players->items as $value) { 
+											$pid=$value->id;
+											$p=$value->name;
+										?>				
+										<option value="<?php echo $pid;?>"  <?php if($pid==$player){echo 'selected';}?> ><?php echo $p;?>
+										</option>			
+										<?php } ?>
+									</select>
+								</td>					
+								<td><select  multiple="multiple" id="playlists<?php echo $i; ?>">
+										<?php foreach ($plists->items as $value) { 
+											$pid=$value->id;
+											$p=$value->name;
+										?>				
+										<option value="<?php echo $pid;?>"  <?php if($pid==$player){echo 'selected';}?> ><?php echo $p;?>
+										</option>			
+										<?php } ?>
+									</select>
+									<script>						
+								        $('#playlists'+<?php echo $i; ?>).multipleSelect();
+									</script>
+									<input type="hidden" value="<?php echo $embed_code; ?>" name="embed_code" id="embed_code<?php echo $i; ?>">
+								</td>	
+								<td><input type="submit" value="Preview"></a></td>
+</form>	    
+			            		
+							    <td align="center"><input type="button" value="Get Embed Code" onclick="call_cbox(<?php echo $i; ?>);"></td>
+							    
+			            	</tr>
+								
+	            	<?php $i++;}} ?>
+	            	
+					</table>
+
+					<?php } ?>
           
         </section>
         
