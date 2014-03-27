@@ -172,7 +172,7 @@
 	            		<th>Select Player</th>
 	            		<th>Select Playlists</th>
 	            		<th>Preview</th>
-	            		
+	            		<th>Shared By</th>
 	            		<th>Embed code</th>
 	            		
 	            	</tr>
@@ -226,7 +226,7 @@
 								</td>	
 								<td><input type="submit" value="Preview"></a></td>
 </form>	    
-			            		
+			            		<td><?php echo $video['sharedByP']; ?></td>
 							    <td align="center"><input type="button" value="Get Embed Code" onclick="call_cbox(<?php echo $i; ?>);"></td>
 							    
 			            	</tr>

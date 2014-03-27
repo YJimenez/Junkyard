@@ -284,13 +284,28 @@ class upload extends conexion {
 	public function getSharedVideos($property) {
 		$query="select * from shareVideos where propertyToShare='$property'";
 		$response=$this->queryResultados($query);
+		$i=0;
 		if($response)
 			foreach($response as $value) {
 				$aux=$this->getVideoToOoyala($value['idVideo']);
-				$array[]=$aux[0];
+				$array[$i]=$aux[0];
+				$array[$i]['sharedBy']=$this->getUserName($value['idUser']);
+				$array[$i]['sharedByP']=$this->getPropertyName($value['idProperty']);
+				$i++;
 			}
 		return $array;
 
+	}
+	public function getUserName($id) {
+		$query="select userL from usuarios where idlogin='$id'";
+		$response=$this->queryResultados($query);
+		return $response[0]['userL'];
+	}
+
+	public function getPropertyName($id) {
+		$query="select property_name from properties where idProperty='$id'";
+		$response=$this->queryResultados($query);
+		return $response[0]['property_name'];
 	}
 }
 ?>

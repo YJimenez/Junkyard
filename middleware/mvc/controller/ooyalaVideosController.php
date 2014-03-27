@@ -31,7 +31,6 @@ if(!$permiso->vPermiso("1,3", $_SESSION['ooyalaUser']['profile'])&&!$_SESSION['o
 
 	$sharedVideos=$uploader->getSharedVideos($_SESSION['ooyalaUser']['property']);
 
-
 //Archivo de la login
 require_once('view/upload/ooyalaVideos.php');
 ?>
