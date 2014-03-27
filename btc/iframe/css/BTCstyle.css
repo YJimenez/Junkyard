@@ -1,0 +1,177 @@
+
+html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input,hr {margin:0; padding:0;}
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; display: inline; zoom: 1; }
+
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin: 0px;
+	font-size: 12px;
+	font-weight: normal;
+	background-color: #ffffff;
+}
+.container {
+  width: 666px;
+  height: 1168px;
+  background: url("../images/bg.jpg");
+}
+
+/* HEADER
+ */
+
+.container .header {
+  width: 666px;
+  height: 102px;
+}
+
+.container .header .social {
+  width: 666px;
+  height: 25px;
+  float: right;
+  margin-top: 14px;
+}
+
+.container .header .social .follow {
+ float: right;
+  margin-right: 9px;
+  z-index: 5;
+  height: 25px;
+  font-family: 'Permanent Marker';
+  color: #aa9975;
+  font-size: 16px;
+ 
+}
+
+
+.container .header .social .tweeter {
+ float: right;
+  margin-right: 6px;
+  z-index: 5;
+  width: 25px;
+  height: 25px;
+  background-image: url("../images/tweet.png");
+  background-repeat:no-repeat;
+  cursor: pointer;
+}
+
+.container .header .social .fb {
+ float: right;
+  margin-right: 14px;
+  z-index: 5;
+  width: 25px;
+  height: 25px;
+  background-image: url("../images/fb.png");
+  background-repeat:no-repeat;
+  cursor: pointer;
+}
+
+/* TOP VIDEOS */
+
+.container .top {
+  float: left;
+  width: 666px;
+  height: 245px;
+}
+
+.container .top .videoTop{
+  float: left;
+  width: 312px;
+  height: 245px;
+  margin-left: 14px;
+  overflow: hidden;
+}
+
+.container .top .videoTop .picT{
+  float: left;
+  width: 312px;
+  height: 184px;
+  background-color: #fff;
+}
+
+.container .top .videoTop .descT{
+  float: left;
+  padding-left: 12px;
+  width: 300px;
+  height: 61px;
+  font-size: 20px;
+  font-family: 'Permanent Marker';
+  line-height:1.1;
+  background-color: #fff;
+}
+.Torange {
+  color: #ff6600;
+}
+.Tblack {
+  color: #000;
+}
+
+/* MIDDLE VIDEOS */
+
+.container .middle {
+  float: left;
+  margin-top: 14px;
+  width: 666px;
+  height: 207px;
+}
+.container .middle .videoM{
+  float: left;
+  width: 203px;
+  height: 207px;
+  margin-left: 14px;
+  background-color: #fff;
+  font-size: 20px;
+  font-family: 'Permanent Marker';
+  overflow: hidden;
+}
+
+.container .middle .videoM .picM{
+  float: left;
+  width: 203px;
+  height: 136px;
+  background-color: #fff;
+}
+
+.container .middle .videoM .descM{
+  float: left;
+  padding-left: 12px;
+  width: 191px;
+  height: 71px;
+  background-color: #fff;
+  line-height:1.1;
+}
+
+/* BOTTOM VIDEOS */
+
+.container .bottom {
+  float: left;
+  margin-top: 50px;
+  width: 666px;
+  height: 438px;
+}
+.container .bottom .videoB{
+  float: left;
+  width: 203px;
+  height: 207px;
+  margin-left: 14px;
+  margin-bottom: 17px;
+  background-color: #fff;
+  font-size: 20px;
+  overflow: hidden;
+  font-family: 'Permanent Marker';
+}
+
+.container .bottom .videoB .picB{
+  float: left;
+  width: 203px;
+  height: 136px;
+  background-color: #fff;
+}
+
+.container .bottom .videoB .descB{
+  padding-left: 12px;
+  float: left;
+  width: 191px;
+  height: 71px;
+  background-color: #fff;
+  line-height:0.9;
+}
