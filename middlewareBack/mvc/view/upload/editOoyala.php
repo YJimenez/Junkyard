@@ -9,9 +9,17 @@
 	</script>
 </head>
 	<body>
-	<?php include("menu.php"); ?>
-	<br/>
- <?php if($success==1) { ?>
+
+
+<table class="wrap">
+     <tr><td align="center">
+		 <?php include("view/upload/menu.php"); ?>
+     </td></tr>
+     <tr><td>
+	 <br/>
+	 
+	 
+	 				<?php if($success==1) { ?>
                     <br>
                         <div class="success">The <?php  echo $asset->name; ?> video has been edited</div>
                    <br>
@@ -20,7 +28,7 @@
 
 	
 	<form  method="post" enctype="multipart/form-data"> 
-		<table border="1" cellpadding="5" cellspacing="0">			
+		<table border="1" cellpadding="5" cellspacing="0" width="100%">			
 			<tr>
 				<td colspan="3">Change Video with same embed code</td>
 			<tr>
@@ -48,4 +56,6 @@
 	</form>
 	<br/>
 	</body>
+</td></tr>
+</table>
 </html>

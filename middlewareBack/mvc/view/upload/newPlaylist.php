@@ -4,14 +4,20 @@
 </head>
 	<body>
 	
-	<?php include("view/upload/menu.php"); ?>
-	<br/>
- <?php if($results->id) { ?>
+<table class="wrap">
+     <tr><td align="center">
+		 <?php include("view/upload/menu.php"); ?>
+     </td></tr>
+     <tr><td>
+	 <br/>
+	 				<?php if($success) { ?>
                     <br>
                         <div class="success">Playlist <?php echo $titulo; ?> has been created</div>
                    <br>
                     <?php } ?>
-	
+
+        
+        
 	<form action="" method="post" enctype="multipart/form-data"> 
 		<table>		
 			<tr>
@@ -45,13 +51,10 @@
 	</form>
 	</body>
 	<?php 
-		echo "<br><pre>Results:<br>";		
-		echo "Playlist nuevo";
-		print_r($results);
-		
-		
-		echo "<br><pre>Results:<br>";		
-		echo "Playlist";
-		print_r($playlist);
+	//	echo "<br><pre>Results:<br>";		
+	//	echo "Playlist nuevo";
+	//	print_r($results);
 	?>
+</td></tr>
+</table>
 </html>

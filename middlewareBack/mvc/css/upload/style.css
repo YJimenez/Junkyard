@@ -2,6 +2,10 @@ index.php
 .table tr:nth-child(even) {background: #fff}
 .table tr:nth-child(odd) {background: #EDEDED}
 
+table.wrap{
+	width:980px; 
+	margin:0px auto;
+}
 ul.menu li{
 	list-style: none;
 	display: inline-block;
@@ -20,6 +24,7 @@ ul.menu{
 	
 	
 }
+
 .success {
 	text-align: center;
   background-color: green;

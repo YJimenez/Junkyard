@@ -14,7 +14,7 @@ if(!$permiso->vPermiso("1", $_SESSION['ooyalaUser']['profile'])&&!$_SESSION['ooy
 	$playlist=$api->get("/v2/playlists");
 	$assets=$api->get("/v2/assets");
 	
-	$videosplaylist=new playlist();
+	$videosplaylist=new upload();
 	$videos=$videosplaylist->getVideos();
 	
 	if($_POST) {

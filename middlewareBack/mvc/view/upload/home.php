@@ -18,13 +18,17 @@
 </head>
 <body>
 
-	<?php include("view/upload/menu.php"); ?>
-	<br/>
+	<table class="wrap">
+     <tr><td align="center">
+		 <?php include("view/upload/menu.php"); ?>
+     </td></tr>
+     </table>
+	 <br/>
 	
-	 <?php if($success==1) { ?>
+	 				<?php if($success==1) { ?>
                     <br>
                         <div class="success">The <?php echo $_POST['titlename']; ?> video has been added</div>
-                   <br>
+					<br>
                     <?php } ?>
 
 	<form  method="post" enctype="multipart/form-data" id="videoForm"> 	
@@ -84,7 +88,6 @@
 		<input type="hidden" name="type" value="newvideo" >	
 		<input type="button" value="Upload Video" onClick="validateVideo();">		
 	</form>
-
 
 </body>
 </html>

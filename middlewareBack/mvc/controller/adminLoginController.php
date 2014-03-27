@@ -16,6 +16,8 @@ if(strlen($_POST['user'])>0&&strlen($_POST['password'])>0){
 			$_SESSION['ooyalaUser']=$dataUser[0];
 			if($dataUser[0]['admin']==1) {
 				$_SESSION['ooyalaAdmin']=$_SESSION['ooyala'];
+				$_SESSION['ooyalaUser']['property']=0;
+				$_SESSION['ooyalaUser']['profile']=0;
 				header("Location: admin.php?section=admin");
 			}
 			else
