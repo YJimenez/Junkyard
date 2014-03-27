@@ -1,0 +1,19 @@
+[{
+	"nombre": "Mexico", 
+	"habitantes": 12000000, 
+	"europa": false, 
+	"estados":["monterrey", "edomex", "df"],
+	"capital": {
+		"nombre": "DF",
+		"habitantes": "12000"
+	}
+}, {
+	"nombre": "Argentina", 
+	"habitantes": 12000000, 
+	"europa": false, 
+	"estados":["cordoba", "buenos aires"],
+	"capital": {
+		"nombre": "sss",
+		"habitantes": "12000"
+	}
+}]

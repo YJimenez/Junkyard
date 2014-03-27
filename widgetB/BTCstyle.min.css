@@ -1,8 +1,0 @@
-html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input,hr{margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}
-audio,canvas,video{display:inline-block;display:inline;zoom:1}body{font-family:Verdana,Arial,Helvetica,sans-serif;margin:0;font-size:12px;font-weight:normal;background-color:#fff}
-.widget{position:relative;padding:0;height:407px;background-color:#144a94;color:#144a94;z-index:2;width:195px}.widget .header{background-color:#fff;color:#000;height:130px;width:195px;z-index:2;overflow:hidden;cursor:pointer}
-.widget .title{background-color:#fff;color:#000;height:75px;width:185px;padding-left:10px;padding-top:15px;z-index:2}.widget .suspensor{height:45px;width:195px;background-color:#fff;color:#000;z-index:2}
-.widget .seeMore{height:143px;width:195px;background-image:url("http://www.junkyard.mx/btc/seeMore.jpg");background-repeat:no-repeat;cursor:pointer;z-index:2}
-.widget .openB{position:absolute;left:0;top:0;z-index:3;width:990px;height:405px;text-align:center;color:#fff;display:none;background-color:#ebdbb4;background-image:url("http://www.junkyard.mx/btc/bg.jpg");background-repeat:no-repeat}
-.widget .openB .divL{float:left;background-color:#fff;width:159px;height:405px;z-index:4}.widget .openB .divC{float:left;background-color:#000;width:491px;height:405px;z-index:4}
-.widget .openB .divR{float:left;background-color:#fcf;width:340px;height:405px;z-index:4}
