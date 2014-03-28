@@ -35,6 +35,7 @@ a {
 }
 
 .container .header .browse {
+  overflow: hidden;
   width: 100px;
   height: 25px;
   float: right;
@@ -194,11 +195,11 @@ a {
   vertical-align: middle;
 }
 .footer .browse {
-  margin-top: 25px;
+  margin-top: 10px;
   float: left;
-  width: 202px;
+  width: 200px;
   margin-left: 16px;
-  background-color: #000;
+  overflow: hidden;
 }
 .footer .copy {
   margin-top: 25px;
@@ -210,4 +211,53 @@ a {
   color: #c0ad79;
   font-family: 'Permanent Marker';
 
+}
+
+/* MENU */
+
+.menuA {
+    width: 128px;
+    padding:0px 10px 7px 20px;
+    margin: 0;
+    background: transparent;
+    font-family: 'Permanent Marker';
+    font-size: 14px;
+    border-radius: 0;
+    background: #cab57d;
+    color:#fff;
+    border:none;
+    outline:none;
+    
+    -webkit-appearance:none;
+    -webkit-appearance: none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+
+    background-image: url('../images/arrowA.png');
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+.menuB {
+  width: 228px;
+    padding:7px 10px 7px 20px;
+    margin: 0;
+    
+   font-family: 'Permanent Marker';
+   font-size: 14px;
+   border-radius: 0;
+    background: #cab57d;
+    color:#fff;
+    border:none;
+    outline:none;
+    
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    cursor:pointer;
+
+    background-image: url('../images/arrow.png');
+    background-repeat: no-repeat;
+    background-position: center right;
 }
