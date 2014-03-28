@@ -10,6 +10,9 @@ body {
 	font-weight: normal;
 	background-color: #ffffff;
 }
+a {
+  text-decoration: none;
+}
 .container {
   width: 666px;
   height: 1168px;
@@ -25,10 +28,18 @@ body {
 }
 
 .container .header .social {
-  width: 666px;
+  width: 186px;
   height: 25px;
   float: right;
   margin-top: 14px;
+}
+
+.container .header .browse {
+  width: 100px;
+  height: 25px;
+  float: right;
+  margin-top: 4px;
+  padding-top: 10px;
 }
 
 .container .header .social .follow {
@@ -174,4 +185,29 @@ body {
   height: 71px;
   background-color: #fff;
   line-height:0.9;
+}
+.footer {
+  margin-top: 40px;
+  float: left;
+  width: 666px;
+  height: 71px;
+  vertical-align: middle;
+}
+.footer .browse {
+  margin-top: 25px;
+  float: left;
+  width: 202px;
+  margin-left: 16px;
+  background-color: #000;
+}
+.footer .copy {
+  margin-top: 25px;
+  float: right;
+  text-align: right;
+  width: 255px;
+  margin-right: 13px;
+  font-size: 12px;
+  color: #c0ad79;
+  font-family: 'Permanent Marker';
+
 }

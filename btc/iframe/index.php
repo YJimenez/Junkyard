@@ -8,9 +8,19 @@ $nextVideos = file_get_contents('http://api.ooyala.com/v2/syndications/833891239
 $nextVideos = preg_replace('/&[^; ]{0,6}.?/e', "((substr('\\0',-1) == ';') ? '\\0' : '&amp;'.substr('\\0',1))", $nextVideos);
 $nextVideos =simplexml_load_string($nextVideos);
 
-//Setting URLs
-$urls=array();
-$urls[0]=array()
+//settings urls
+//url top
+for($i=0; $i<=1; $i++) {
+	$urlTop[$i]=preg_replace("/[^A-Za-z0-9 ]/", "", $topVideos->item[$i]->title);
+	$urlTop[$i]=preg_replace("/ /", "-", $urlTop[$i]);
+	$urlTop[$i]="/beyond-the-comics-".strtolower($urlTop[$i]);
+}
+//url Next
+for($i=0; $i<=7; $i++) {
+	$urlNext[$i]=preg_replace("/[^A-Za-z0-9 ]/", "", $nextVideos->item[$i]->title);
+	$urlNext[$i]=preg_replace("/ /", "-", $urlNext[$i]);
+	$urlNext[$i]="/beyond-the-comics-".strtolower($urlNext[$i]);
+}
 
 // echo "<pre>";
 // print_r($topVideos);
@@ -36,16 +46,22 @@ $urls[0]=array()
 					<div class="tweeter"></div>
 					<div class="follow">Follow</div>
 				</div>
+				<div class="browse">
+				</div>
 			</div>
 			<div class="top">
 				<?php for ($i=0; $i<=1; $i++) { ?>
 				<div class="videoTop">
 					<div class="picT">
-						<img src="<?php echo $topVideos->item[$i]->preview; ?>" width="315">
+						<a href="<?php echo $urlTop[$i]; ?>">
+							<img src="<?php echo $topVideos->item[$i]->preview; ?>" width="315">
+						</a>
 					</div>
 					<div class="descT">
-						<span class="Torange"><?php echo $topVideos->item[$i]->title; ?></span><br>
-						<span class="Tblack"><?php echo $topVideos->item[$i]->description; ?></span>
+						<a href="<?php echo $urlTop[$i]; ?>">
+							<span class="Torange"><?php echo $topVideos->item[$i]->title; ?></span><br>
+							<span class="Tblack"><?php echo $topVideos->item[$i]->description; ?></span>
+						</a>
 					</div>
 				</div>
 				<?php } ?>
@@ -54,22 +70,30 @@ $urls[0]=array()
 			<div class="middle">
 				<div class="videoM">
 					<div class="picM">
-						<img src="<?php echo $nextVideos->item[0]->preview; ?>" width="220">
+						<a href="<?php echo $urlNext[0]; ?>">
+							<img src="<?php echo $nextVideos->item[0]->preview; ?>" width="220">
+						</a>
 					</div>
 					<div class="descM">
-						<span class="Torange"><?php echo $nextVideos->item[0]->title; ?></span><br>
-						<span class="Tblack"><?php echo $nextVideos->item[0]->description; ?></span>
+						<a href="<?php echo $urlNext[0]; ?>">
+							<span class="Torange"><?php echo $nextVideos->item[0]->title; ?></span><br>
+							<span class="Tblack"><?php echo $nextVideos->item[0]->description; ?></span>
+						</a>
 					</div>
 				</div>
 				<div class="videoM">
 				</div>
 				<div class="videoM">
 					<div class="picM">
-						<img src="<?php echo $nextVideos->item[1]->preview; ?>" width="220">
+						<a href="<?php echo $urlNext[1]; ?>">
+							<img src="<?php echo $nextVideos->item[1]->preview; ?>" width="220">
+						</a>
 					</div>
 					<div class="descM">
-						<span class="Torange"><?php echo $nextVideos->item[1]->title; ?></span><br>
-						<span class="Tblack"><?php echo $nextVideos->item[1]->description; ?></span>
+						<a href="<?php echo $urlNext[1]; ?>">
+							<span class="Torange"><?php echo $nextVideos->item[1]->title; ?></span><br>
+							<span class="Tblack"><?php echo $nextVideos->item[1]->description; ?></span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -77,14 +101,25 @@ $urls[0]=array()
 				<?php for ($i=2; $i<=7; $i++) { ?>
 				<div class="videoB">
 					<div class="picB">
-						<img src="<?php echo $nextVideos->item[$i]->preview; ?>" width="220">
+						<a href="<?php echo $urlNext[$i]; ?>">
+							<img src="<?php echo $nextVideos->item[$i]->preview; ?>" width="220">
+						</a>
 					</div>
 					<div class="descB">
-						<span class="Torange"><?php echo $nextVideos->item[$i]->title; ?></span><br>
-						<span class="Tblack"><?php echo $nextVideos->item[$i]->description; ?></span>
+						<a href="<?php echo $urlNext[$i]; ?>">
+							<span class="Torange"><?php echo $nextVideos->item[$i]->title; ?></span><br>
+							<span class="Tblack"><?php echo $nextVideos->item[$i]->description; ?></span>
+						</a>
 					</div>
 				</div>
 				<?php } ?>
+			</div>
+			<div class="footer">
+				<div class="browse">
+				</div>
+				<div class="copy">
+					<span>copyright © 2014 Beyond the Comics</span>
+				</div>
 			</div>
 			
 		</div>
