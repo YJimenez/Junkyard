@@ -56,7 +56,7 @@ for($i=0; $i<=7; $i++) {
 					<select class="menuA" id="menuA" onchange="MM_jumpMenu('parent',this,0)">
 						<option>Browse</option>
 						<?php for ($i=0; $i<=1; $i++) { ?>
-						<option value="<?php echo $urlTop[$i]; ?>"><?php echo $topVideos->item[$i]->title; ?></option>
+						<option value="<?php echo $urlTop[$i]; ?>" ><?php echo $topVideos->item[$i]->title; ?></option>
 						<?php } ?>
 						<?php for ($i=0; $i<=7; $i++) { ?>
 						<option value="<?php echo $urlNext[$i]; ?>"><?php echo $nextVideos->item[$i]->title; ?></option>
@@ -68,12 +68,12 @@ for($i=0; $i<=7; $i++) {
 				<?php for ($i=0; $i<=1; $i++) { ?>
 				<div class="videoTop">
 					<div class="picT">
-						<a href="<?php echo $urlTop[$i]; ?>">
+						<a href="<?php echo $urlTop[$i]; ?>" target="_top">
 							<img src="<?php echo $topVideos->item[$i]->preview; ?>" width="315">
 						</a>
 					</div>
 					<div class="descT">
-						<a href="<?php echo $urlTop[$i]; ?>">
+						<a href="<?php echo $urlTop[$i]; ?>" target="_top">
 							<span class="Torange"><?php echo $topVideos->item[$i]->title; ?></span><br>
 							<span class="Tblack"><?php echo $topVideos->item[$i]->description; ?></span>
 						</a>
@@ -85,12 +85,12 @@ for($i=0; $i<=7; $i++) {
 			<div class="middle">
 				<div class="videoM">
 					<div class="picM">
-						<a href="<?php echo $urlNext[0]; ?>">
+						<a href="<?php echo $urlNext[0]; ?>" target="_top">
 							<img src="<?php echo $nextVideos->item[0]->preview; ?>" width="220">
 						</a>
 					</div>
 					<div class="descM">
-						<a href="<?php echo $urlNext[0]; ?>">
+						<a href="<?php echo $urlNext[0]; ?>" target="_top">
 							<span class="Torange"><?php echo $nextVideos->item[0]->title; ?></span><br>
 							<span class="Tblack"><?php echo $nextVideos->item[0]->description; ?></span>
 						</a>
@@ -100,12 +100,12 @@ for($i=0; $i<=7; $i++) {
 				</div>
 				<div class="videoM">
 					<div class="picM">
-						<a href="<?php echo $urlNext[1]; ?>">
+						<a href="<?php echo $urlNext[1]; ?>" target="_top">
 							<img src="<?php echo $nextVideos->item[1]->preview; ?>" width="220">
 						</a>
 					</div>
 					<div class="descM">
-						<a href="<?php echo $urlNext[1]; ?>">
+						<a href="<?php echo $urlNext[1]; ?>" target="_top">
 							<span class="Torange"><?php echo $nextVideos->item[1]->title; ?></span><br>
 							<span class="Tblack"><?php echo $nextVideos->item[1]->description; ?></span>
 						</a>
@@ -116,12 +116,12 @@ for($i=0; $i<=7; $i++) {
 				<?php for ($i=2; $i<=7; $i++) { ?>
 				<div class="videoB">
 					<div class="picB">
-						<a href="<?php echo $urlNext[$i]; ?>">
+						<a href="<?php echo $urlNext[$i]; ?>" target="_top">
 							<img src="<?php echo $nextVideos->item[$i]->preview; ?>" width="220">
 						</a>
 					</div>
 					<div class="descB">
-						<a href="<?php echo $urlNext[$i]; ?>">
+						<a href="<?php echo $urlNext[$i]; ?>" target="_top">
 							<span class="Torange"><?php echo $nextVideos->item[$i]->title; ?></span><br>
 							<span class="Tblack"><?php echo $nextVideos->item[$i]->description; ?></span>
 						</a>

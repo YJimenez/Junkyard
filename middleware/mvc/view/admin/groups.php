@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
         <link rel="stylesheet" type="text/css" href="css/admin/adminStyle.css"/>
         <script type="text/javascript" src="js/admin/main.js"></script>
-        <title>Middleware Admin</title>
+        <title>Video Uploader Admin</title>
     </head>
  
     <body>

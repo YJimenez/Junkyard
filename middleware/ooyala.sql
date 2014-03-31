@@ -11,7 +11,7 @@
  Target Server Version : 50616
  File Encoding         : utf-8
 
- Date: 03/26/2014 10:18:07 AM
+ Date: 03/31/2014 10:22:56 AM
 */
 
 SET NAMES utf8;
@@ -72,6 +72,26 @@ INSERT INTO `properties` VALUES ('1', 'LADaily News', '1', '1'), ('2', 'Inland D
 COMMIT;
 
 -- ----------------------------
+--  Table structure for `shareVideos`
+-- ----------------------------
+DROP TABLE IF EXISTS `shareVideos`;
+CREATE TABLE `shareVideos` (
+  `idShare` int(11) NOT NULL AUTO_INCREMENT,
+  `idVideo` int(11) DEFAULT NULL,
+  `idProperty` int(11) DEFAULT NULL,
+  `idUser` int(11) DEFAULT NULL,
+  `propertyToShare` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idShare`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `shareVideos`
+-- ----------------------------
+BEGIN;
+INSERT INTO `shareVideos` VALUES ('18', '1', '3', '2', '12'), ('19', '1', '3', '2', '13'), ('20', '1', '3', '2', '19'), ('21', '1', '3', '2', '14');
+COMMIT;
+
+-- ----------------------------
 --  Table structure for `upload`
 -- ----------------------------
 DROP TABLE IF EXISTS `upload`;
@@ -81,27 +101,6 @@ CREATE TABLE `upload` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- ----------------------------
---  Table structure for `usuarios`
--- ----------------------------
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE `usuarios` (
-  `idlogin` int(11) NOT NULL AUTO_INCREMENT,
-  `userL` varchar(255) DEFAULT NULL,
-  `passL` varchar(255) DEFAULT NULL,
-  `actL` varchar(255) DEFAULT NULL,
-  `property` int(3) NOT NULL,
-  `admin` int(1) NOT NULL DEFAULT '0',
-  `profile` int(1) NOT NULL,
-  PRIMARY KEY (`idlogin`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
-
--- ----------------------------
---  Records of `usuarios`
--- ----------------------------
-BEGIN;
-INSERT INTO `usuarios` VALUES ('1', 'admin', '202cb962ac59075b964b07152d234b70', '1', '0', '1', '0'), ('2', 'test', '202cb962ac59075b964b07152d234b70', '1', '3', '0', '1'), ('12', 'etorres', '202cb962ac59075b964b07152d234b70', '1', '12', '0', '2'), ('13', 'yair', '202cb962ac59075b964b07152d234b70', '1', '14', '0', '3');
-COMMIT;
 
 -- ----------------------------
 --  Table structure for `videos`
